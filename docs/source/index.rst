@@ -18,6 +18,6 @@ Contents
 
 .. toctree::
 
-   usage
-   api
-   test
+   usage.rst
+   api.rst
+   test.rst
