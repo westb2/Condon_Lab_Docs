@@ -21,3 +21,7 @@ If you want to add an image to your documentation simple add the image you want 
 ```
 
 You can then run `mkdocs serve` to see a local version of your new and updated docs at `http://127.0.0.1:8000/`
+
+When everything looks good you can merge your branch to `main` either locally and then `push` your code to the remote or via a pull request. Pull requests are not required for updating this documentation. 
+
+After your changes are on `main` make sure your local `main` branch is in sync with the remote (`git pull origin main`) then run `mkdocs build` to build the new version of the site and `mkdocs gh-deploy` to deploy the new version! 
