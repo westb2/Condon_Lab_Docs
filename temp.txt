@@ -1,0 +1,29 @@
+Admin
+√ Travel reimbursement (https://docs.google.com/document/d/1l-8b1SqvcppEZO9MX_6KAK2nMhwHH8Y4E-cmWIOMJG4/edit?usp=sharing)
+√ PCard reimbursement (https://docs.google.com/document/d/1l-8b1SqvcppEZO9MX_6KAK2nMhwHH8Y4E-cmWIOMJG4/edit?usp=sharing )
+ 
+How to Notes:
+Data and File transfers
+√ Apple Remote Desktop SSH: https://docs.google.com/document/d/1098-SSLZgf0StXRDJQzgMF8UuswciKvrhui_U6KZQoI/edit?usp=sharing
+√ Globus: https://docs.google.com/document/d/1F_ov6o7vWeKxwsFPKj6XMzMuvNjCLIizXC1KaE3pYiQ/edit?usp=sharing
+√ Cyverse: https://docs.google.com/document/d/1_OeS4f52X-7CK-Rxr35QbmOONdX7gVhA1vb1kKG9Vak/edit?usp=sharing
+HPC Systems:
+√ Cori: https://docs.google.com/document/d/1u2KqS7SIEHUAceLUbye1HWyqAgA9pa9Z7auF1rYAZ5c/edit?usp=sharing
+Cheyenne: https://docs.google.com/document/d/18AWEQlV3PyJBjYl9jvHWey-Y_7Cnkl-yI9-x-6C1fFg/edit?usp=sharing
+Verde:  (just leave a placeholder for this one don’t have stuff for it yet)
+UA HPC: https://docs.google.com/document/d/1ltw2nY-buSROAPszWqP9uqrw3r2avRQG-8MsbChwNJY/edit?usp=sharing
+Parflow Install : https://docs.google.com/document/d/1Y0Mof6lEA-zINhOZmnPVa9CTfIXpmXqxcyvcdaPvtyg/edit  (Maybe just break this up into sub headings by the system type)
+ 
+Example Scripts
+Want this to be a space for people to put example notebooks and scripts for getting stuff done. I’m not sure exactly what the documentation would look like for this if it would just be a list of things the files or something.
+ 
+Useful External Resources
+Links to Research Repos:
+I’ll have the students populate this with links to repos from their publications
+ParFlow Resources
+I’ll fill this in with links and pointers to different
+Great Python Packages
+Also a list the students will fill in
+ 
+Tutorials and Training Materials:
+This will also be just links to resources that we use so can just put a documentation placeholder there.
