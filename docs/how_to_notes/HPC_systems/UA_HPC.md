@@ -8,9 +8,9 @@
   Running notes with links and tips for running on the UA HPC system.  Feel free to update and add to this document as needed. 
 
 
-## Ocelot Quick Start
+## Ocelote Quick Start
 
-A good starting point. Tutorial highlights essential steps in running a basic job on HPC Ocelot.
+A good starting point. Tutorial highlights essential steps in running a basic job on HPC Ocelote.
 
 
 

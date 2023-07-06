@@ -1,2 +1,3 @@
 site_name: Condon Research Group Docs
 site_url: https://condon-lab.github.io/Condon_Lab_Docs/
+theme: readthedocs
