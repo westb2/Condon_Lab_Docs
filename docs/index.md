@@ -1,5 +1,5 @@
 # Condon Research Group Docs
-This is a repository for holding all things documentation that might be helpful. It has been created using [mkdocs] (https://www.mkdocs.org).
+This is a repository for holding all things documentation that might be helpful. It has been created using [mkdocs](https://www.mkdocs.org).
 
 ## Contributing
 To contribute first you need to clone this repo
