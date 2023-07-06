@@ -15,13 +15,13 @@ Then edit docs to your hearts content!
 If you prefer to write documentation using google docs, you can convert a google doc to a a markdown file easily using [this chrome extension](https://workspace.google.com/marketplace/app/docs_to_markdown/700168918607).
 Additionally, [here are some helpful markdown tips and tricks](https://www.markdownguide.org/cheat-sheet/).
 
-If you want to add an image to your documentation simple add the image you want to the `./images` directory and then reference the image using the relative path. e.g.
+If you want to add an image to your documentation simply add the image you want to the `./images` directory and then reference the image using the relative path. e.g.
 ```
 [alt text for your image](../../images/my_image.png)
 ```
 
 You can then run `mkdocs serve` to see a local version of your new and updated docs at `http://127.0.0.1:8000/`
 
-When everything looks good you can merge your branch to `main` either locally and then `push` your code to the remote or via a pull request. Pull requests are not required for updating this documentation. 
+When everything looks good open a pull equest to `main` and eithe in slack or assign [Laura](https://github.com/lecondon) and/or [Will](https://github.com/welytle) to review.
 
-After your changes are on `main` make sure your local `main` branch is in sync with the remote (`git pull origin main`) then run `mkdocs build` to build the new version of the site and `mkdocs gh-deploy` to deploy the new version! 
+After your PR has been appoved and merge in your code `git pull origin main` to update you local main banch and run `mkdocs build` to build the new version of the site and `mkdocs gh-deploy` to deploy the new version! 
