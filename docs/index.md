@@ -23,6 +23,6 @@ If you remove an image from an existing doc, please remove the image file also.
 
 You can then run `mkdocs serve` to see a local version of your new and updated docs in you browse at `http://127.0.0.1:8000/`
 
-When everything looks good open a pull equest to `main` and either ping in slack or assign [Laura](https://github.com/lecondon) and/or [Will](https://github.com/welytle) to review.
+When everything looks good open a pull request to `main` and either ping in slack or assign [Laura](https://github.com/lecondon) and/or [Will](https://github.com/welytle) to review.
 
-After your PR has been appoved and merged, update you local `main banch` - `git pull origin main` - and run `mkdocs build` to build the new version of the site and `mkdocs gh-deploy` to deploy the new version! 
+After your PR has been appoved, merge it in and go check out your new docs over at [https://condon-lab.github.io/Condon_Lab_Docs/](https://condon-lab.github.io/Condon_Lab_Docs/)
