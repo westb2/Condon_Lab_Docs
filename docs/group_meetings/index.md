@@ -4,6 +4,8 @@ Below is a summary of our past group meetings.  They are organized by year and s
 ## 2023
 ### Spring
 Group Meeting Coordinator: Patricia Puente
+
+---
 | Date | Description| Resources |
 |---|---|---|
 |2/2 | Two Slide Research Updates and Discussion on the Salton Sea|[Slides for the Salton sea](https://docs.google.com/presentation/d/1okXl2uCZkjAwDyEGZVVsKJWZ8Tddt-3f/edit?usp=sharing&ouid=104873212690310383662&rtpof=true&sd=true)|
@@ -16,6 +18,8 @@ Group Meeting Coordinator: Patricia Puente
 
 ### Fall
 Group Meeting Coordinator: Danielle Tadych
+
+---
 | Date | Description| Resources |
 |---|---|---|
 |9/7| Discussed an article on declining global water storage | [Satellites reveal widespread decline in global lake water storage](https://www.science.org/doi/10.1126/science.abo2812)
