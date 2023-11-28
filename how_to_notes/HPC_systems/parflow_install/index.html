@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://condon-lab.github.io/Condon_Lab_Docs/how_to_notes/HPC_systems/parflow_install/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>ParFlow Install - Condon Research Group Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ParFlow Install";
+        var mkdocs_page_input_path = "how_to_notes/HPC_systems/parflow_install.md";
+        var mkdocs_page_url = "/Condon_Lab_Docs/how_to_notes/HPC_systems/parflow_install/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Condon Research Group Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Condon Research Group Docs</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/pcard/">Pcard</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_autorization/">Information Regarding Travel Authorization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_reimbursement/">Information Regarding Reimbursement for Travel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Example scripts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../example_scripts/">Example scripts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Group meetings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../group_meetings/">Group Meetings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How to notes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">HPC systems</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../UA_HPC/">UA HPC Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cheyenne/">Running on Cheyenne (NCAR)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cori/">Cori</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">ParFlow Install</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ua-hpc-ocelote">UA-HPC Ocelote</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contacts">Contacts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#software-install-request-form">Software install request form</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#module-commands">Module commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#job-submit-and-queue-information">Job submit and queue information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-parflow">Building ParFlow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-parflow">Build ParFlow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#macos-mojave">MacOS Mojave</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#preliminaries">Preliminaries</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#macos-high-sierra">MacOS High Sierra</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pfnetcdf-on-tacc-stampede2">PFNetCDF on TACC Stampede2</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../verde/">Verde</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Data and file transfers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/apple_remote_desktop_ssh/">Remote Desktop / SSH / Basic Command line</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/cyverse/">General Cyverse Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/globus/">Globus File Transfer</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Useful external resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/great_python_packages/">Great python packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/parflow_resources/">Parflow resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/research_repos/">Research repos</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Condon Research Group Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How to notes</li>
+          <li class="breadcrumb-item">HPC systems</li>
+      <li class="breadcrumb-item active">ParFlow Install</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="parflow-install">ParFlow Install</h1>
+<p><strong><em>Laura Condon, 2/13/19</em></strong></p>
+<h2 id="description">Description</h2>
+<p>A running set of notes on ParFlow installs for various platforms. Please update this with your experiences either by adding comments or inserting text.  Please Add new installs to the top of this doc and use headings so that they can be included in the table of contents. </p>
+<p>**NOTE: If you are installing on a mac refer first to the ParFlow blog <a href="http://parflow.blogspot.com/">http://parflow.blogspot.com/</a>  and look for the latest version in the compiling section which corresponds to your operating system. **</p>
+<p><strong>Links: </strong>You should also refer to the ParFlow blog for additional resources <a href="http://parflow.blogspot.com/">http://parflow.blogspot.com/</a> </p>
+<h2 id="ua-hpc-ocelote">UA-HPC Ocelote</h2>
+<p><strong>Notes from Laura Fall 2018</strong></p>
+<h2 id="contacts">Contacts</h2>
+<p>Ric Anderson: ric@email.arizona.edu</p>
+<p>Chris Reidy: chrisreidy@email.arizona.edu</p>
+<h2 id="software-install-request-form">Software install request form</h2>
+<p><a href="https://it.arizona.edu/service-request-forms">https://it.arizona.edu/service-request-forms</a></p>
+<p>They built Hypre and silo and these are available as modules</p>
+<h2 id="module-commands">Module commands</h2>
+<p><strong><a href="https://docs.hpc.arizona.edu/display/UAHPC/Accessing+Software">https://docs.hpc.arizona.edu/display/UAHPC/Accessing+Software</a></strong></p>
+<pre><code>Module list  (gives loaded modules)
+
+Module avail (gives list of all modules)
+
+Module show NAME (gives info on a specific module
+</code></pre>
+<h2 id="job-submit-and-queue-information">Job submit and queue information</h2>
+<p>Ocelote uses pbs for its job management system.</p>
+<p>Example pbs script for running on 1 node:</p>
+<pre><code>### Your job will use 1 node, 28 cores, and 168gb of memory total.
+
+#PBS -q standard
+
+#PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb
+
+### Specify a name for the job
+
+#PBS -N job_name
+
+### Specify the group name
+
+#PBS -W group_list=lecondon
+
+### Walltime is how long your job will run
+
+#PBS -l walltime=00:50:00
+</code></pre>
+<pre><code>Example pbs script for debugging script (always a good idea before you run anything):
+
+### Your job will use 1 node, 28 cores, and 168gb of memory total.
+
+#PBS -q debug
+
+#PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb
+
+### Specify a name for the job
+
+#PBS -N job_name
+
+### Specify the group name
+
+#PBS -W group_list=lecondon
+
+### Walltime is how long your job will run
+
+#PBS -l walltime=00:05:00
+</code></pre>
+<p>qsub job_name.pbs (submits jobs)</p>
+<p>qstat (lists all jobs running and in queue)</p>
+<h2 id="building-parflow">Building ParFlow</h2>
+<p><code>ssh_ _username@hpc.arizona.edu</code></p>
+<p>Download ParFlow</p>
+<p><code>git clone https://github.com/parflow/parflow</code></p>
+<p>Rename this directory to whatever you want</p>
+<p>Setup environment</p>
+<p><code>vi ~/.bashrc</code></p>
+<p>Add the following lines to the user specified portion:</p>
+<pre><code>module load gcc
+
+module load hypre
+
+module load silo
+
+export PARFLOW_DIR=/home/PATH_TO_YOUR_PARFLOW_DIR
+
+PATH=$PATH:$PARFLOW_DIR/bin
+</code></pre>
+<p><code>source ~/.bashrc</code></p>
+<h2 id="build-parflow">Build ParFlow</h2>
+<pre><code>cd pfsimulator
+
+./configure  --prefix=$PARFLOW_DIR --with-amps=mpi1 --with-clm --with-hypre=$HYPRE_BASE --with-silo=$SILO_BASE --with-amps-sequential-io
+
+make -j 14
+
+make install
+
+Build PFtools
+
+cd ../pftools
+
+./configure  --prefix=$PARFLOW_DIR --with-amps=mpi1 --with-clm --with-hypre=$HYPRE_BASE --with-silo=$SILO_BASE --with-amps-sequential-io
+
+make -j 14
+
+make install
+
+Run tests
+
+cd ../test
+
+make check
+</code></pre>
+<h2 id="macos-mojave">MacOS Mojave</h2>
+<p><strong>These notes are from Nick Engdahl 2/12i/2019:</strong></p>
+<p>This post will describe a “typical” ParFlow installation, that is one that uses the most common options and configurations on macOS using the default bash shell. We’ll primarily use the command line for this so go ahead and open a terminal window (if you don’t know where terminal is use spotlight search).</p>
+<h3 id="preliminaries">Preliminaries</h3>
+<p>For commands entered into the terminal window I’ll use the following convention where the command is preceded with “<em>&gt;&gt;</em>” for example:</p>
+<p><em>&gt;&gt; make                    </em>{and here’s an example comment/note you <span style="text-decoration:underline;">don’t</span> type}</p>
+<p><em>Anything that follows in curly brackets </em>{ }<em> is just a note or comment and is NOT to be entered.</em></p>
+<p>OK, first thing’s first. We need to define a few environment variables for the installation. Navigate to your home folder and create (or edit) your bash_profile:</p>
+<pre><code>&gt;&gt; cd ~
+
+&gt;&gt; vim .bash_profile
+</code></pre>
+<p>In vim, hit “i” to enter insert mode and add the following lines, preferably at the bottom:</p>
+<pre><code>export PARFLOW_DIR=~/ParF/parflow
+
+export HYPRE_DIR=~/ParF/hypre
+
+export SILO_DIR=~/ParF/silo
+
+export CC=clang
+
+export CXX=clang++
+
+export FC=gfortran
+
+export F77=gfortran
+</code></pre>
+<p>then press “escape” followed by “:” then “x” to save the changes and exit. To apply the changes:</p>
+<p><code>&gt;&gt; source .bash_profile</code></p>
+<p>This has now defined some environment variables and shortcuts we’ll take advantage of later on. Next, we’ll create a directory to hold all the various bits that comprise a typical installation. From your home directory, make a folder called “ParF” and enter it:</p>
+<pre><code>&gt;&gt; cd ~                                 {only necessary if you’ve navigated out of home}
+
+&gt;&gt; mkdir ParF
+
+&gt;&gt; cd ParF
+</code></pre>
+<p>There are 6 “parts” to these instructions and we’re going to handle each separately: 1) install gcc/gfortran, 2) install cmake, 3) install OpenMPI, 4) Install Silo, 5) Install Hypre, 6) install ParFlow. Everything except step 6 are supporting libraries or programs that ParFlow needs for our typical installation.</p>
+<p>Step 1) Installing gfortran and gcc</p>
+<p>Truth be told we only really need gfortran but gcc is nice to have, and since they’re often bundled it makes sense to knock both out. You could try building them from source code, but the easier way is to use a binary that is pre-built for MacOS. Those can be downloaded here: <a href="http://hpc.sourceforge.net">http://hpc.sourceforge.net</a></p>
+<p>The option you want is usually the first entry right below the word “Binaries” after the “big” paragraph. Today, for me that is “gcc-8.1-bin.tar.gz” and clicking on that link put it in my “Downloads” folder. You don’t need to bother with the “gfortran” link because it’s already included in this one. In your terminal window, we first need to enable compiling programs on your mac. This is necessary after every major MacOS upgrade before you can compile new programs (old one will be fine though).</p>
+<p><code>&gt;&gt; sudo xcode-select --install</code></p>
+<p>A confirmation window will likely open and after you OK through all of that, we’re done with that. You might also see a message saying command line tools are already installed, which is also fine.</p>
+<p>Next, navigate to wherever you put that download and extract it to /usr/local with:</p>
+<pre><code>&gt;&gt; cd ~/Downloads               {assuming your Download went here}
+
+&gt;&gt; sudo tar -xvf gcc-8.1-bin.tar -C /
+</code></pre>
+<p>A lot of text will fly by then you’ll get a command prompt. To make sure this has copied correctly, at the command prompt type:</p>
+<p><code>&gt;&gt; gfortran -v</code></p>
+<p>And you should get something like this:</p>
+<pre><code>Using built-in specs.
+
+COLLECT_GCC=gfortran
+
+COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-apple-darwin17.5.0/8.1.0/lto-wrapper
+
+Target: x86_64-apple-darwin17.5.0
+
+Configured with: ../gcc-8.1.0/configure --enable-languages=c++,fortran
+
+Thread model: posix
+
+gcc version 8.1.0 (GCC)
+</code></pre>
+<p>There is one last critically important step we need to take that was not necessary in the past. We need to install the package in MacOS that has some of the libraries we need in order to compile programs. These are located in “/Library/Developer/CommandLineTools/Packages/” and the easiest way to get there is to open a finder window, press command+shift+g, then paste in that path. There is only one package in this folder (macOS_SDK_headers_for_macOS_10.14.pkg), though its name might change, and to install it just double click on it and follow the instructions. I would also suggest you run “sudo --xcode-select --s /Library/Developer/CommandLineTools” to make sure the system is pointing to the right version. Apple may be depreciating the package in future macOS releases, but we’ll update you if/when that happens.</p>
+<p>Step 2) Installing cmake</p>
+<p>Past installation instructions have used the GNU autoconfig system. We’ll still use that for some of the supporting components, but ParFlow itself is now built using the CMake interface. This isn’t installed on your mac by default, so we’ll start by adding it.</p>
+<p>We’re going to download the latest version of the CMake source. There is also a GUI for CMake but we’re not going to use it. Before proceeding, check here: <a href="https://cmake.org/download/">https://cmake.org/download/</a> for the latest version. On the download page, go ahead and click on the link for the archive in the Unix/Linux source box and the download should complete shortly. Assuming the archive is in your ~/Downloads/ folder, we’ll copy it into ParF, the expand the archive:  As of this writing that file is “cmake-3.14.0-rc1.tar.gz”</p>
+<p>To move that download directly into the ParF folder, in your terminal window, be sure you’re in the ParF directory, then type:</p>
+<pre><code>&gt;&gt; cd ~/ParF/
+
+&gt;&gt; cp ~/Downloads/cmake-3.14.0-rc1.tar .
+
+&gt;&gt; tar -xvf cmake-3.14.0-rc1.tar
+</code></pre>
+<p>Note the period at the end of the second line. You will need to update the file name as newer versions of CMake are released.</p>
+<p>Now we’ll enter the new directory and start building using cmake’s helper:</p>
+<pre><code>&gt;&gt; cd cmake-3.14.0-rc1
+
+&gt;&gt; ./bootstrap                          {This will take a while}
+
+&gt;&gt; make                                 {This will also take a while}
+
+&gt;&gt; sudo make install                _
+</code></pre>
+<p>At the end of the make process you’ll see percentage signs on the left edge of your screen and if it makes it to 100 without errors, you’re all set.</p>
+<p>*From Jun:</p>
+<p>When installing <code>cmake</code>, on the step of <code>./bootstrap</code>, sometimes it will pop up an error message that ‘Unable to find any JVMs matching version’, just follow the instruction to install the up-to-date JAVA’</p>
+<p>Step 3) Installing OpenMPI</p>
+<p>OpenMPI is the message passing interface we use for ParFlow (note that this is not the same as OpenMP). This is also what makes it parallel so we’ll do this step next. Navigate back to your ParF directory:</p>
+<p><code>&gt;&gt; cd ~/ParF</code></p>
+<p>Next we’re going to download openmpi. The simplest way to do that is from the command line using the “curl” command, which is like “wget” for a mac. However, before doing so you might want to check to make sure you’re downloading the most recent version at “https://www.open-mpi.org/software/ompi/”</p>
+<p>You’ll need to modify the version numbers if using a more recent release but otherwise it’ll be just like this:</p>
+<p><code>&gt;&gt; curl “https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz” -o “openmpi-4.0.0.tar.gz”</code></p>
+<p>(Note: When copying and pasting, sometimes quotes get messed up. If you get an error from that command about libcurl, just delete then re-add the quotation marks manually once you’re in the terminal window.)</p>
+<p>Next, we’ll decompress and extract the archive in one step:</p>
+<p><code>&gt;&gt; gunzip -c openmpi-4.0.0.tar.gz | tar xf -</code></p>
+<p>Next, we’ll configure the installation package for our system. Navigate into the newly created openmpi-4.0.0 folder and type:</p>
+<p><code>&gt;&gt; ./configure --prefix=/usr/local CC=/usr/bin/clang CXX=/usr/bin/clang++</code></p>
+<p>Those CC and CXX arguments force the computer to use a specific compiler, which is clang. On most systems this should install fine without those, but it doesn’t hurt to have them. After you hit return, lots of stuff will fly by your screen for a long time. Once that’s done, type:</p>
+<p><code>&gt;&gt; sudo make all install</code></p>
+<p>which will take forever and a decade before it completes, but then that’s it; OpenMPI is now installed. If you want to check, type “mpirun” at the command line, but not much will happen since it can’t find anything to do.</p>
+<p><span style="text-decoration:underline;">Important:</span> Remember that sudo is the “nuclear option” on unix-esque computers and should only be used when absolutely necessary; the install path for OpenMPI is inside a protected folder so we need to invoke sudo in this case, otherwise the installation can’t go to the default. You could specify an alternate location, but since most applications that might use OpenMPI will look here, we might as well.</p>
+<p>Step 4) Installing Silo</p>
+<p>Silo is a file format that is used as the default for viewing ParFlow outputs, but we also now have other options available. Many of the test cases use it so we always recommend installing it. The latest version of silo can be found at: <a href="https://wci.llnl.gov/simulation/computer-codes/silo/downloads">https://wci.llnl.gov/simulation/computer-codes/silo/downloads</a></p>
+<p>You could download the archive in a web browser and move it but instead I’m going to use curl again. Navigate to the ParF folder and the commands are:</p>
+<p><code>&gt;&gt; cd ~/ParF</code></p>
+<p><code>&gt;&gt; curl “https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2.tar.gz” -o “silo-4.10.2.tar.gz”</code></p>
+<p>Mimicking the process we used for OpenMPI, to expand and extract the archive type:</p>
+<p><code>&gt;&gt; gunzip -c silo-4.10.2.tar.gz | tar xf -</code></p>
+<p>Now we’ll rename the newly expanded directory to match our environment variable SILO_DIR:</p>
+<p><code>&gt;&gt; mv silo-4.10.2 silo</code></p>
+<p>Now we’ll navigate into the new directory, configure, and install:</p>
+<pre><code>&gt;&gt; cd silo
+
+&gt;&gt; ./configure --disable-silex
+
+&gt;&gt; make install
+
+&gt;&gt; cd ..
+</code></pre>
+<p>And that completes the installation.</p>
+<p>Note that if your version of Silo differs, you’ll need to update the appropriate file/directory names environment variable we set to reflect your installation path.</p>
+<p>Step 5) Installing the HYPRE library</p>
+<p>HYPRE is a library of numerical solvers for high-performance computing applications and ParFlow hooks into it for some of its functionality. </p>
+<p>As before the simplest way to get this is curl. There were some issues with hypre version 10 and ParFlow but the current release (2.11.2) or newer should work just fine.</p>
+<p>Installing this is nothing more than a minor variation of what we’ve already done:</p>
+<p><code>&gt;&gt; cd ~/ParF</code></p>
+<p><code>&gt;&gt; curl “https://computating.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods/download/hypre-2.11.2.tar.gz” -o “hypre-2.11.2.tar.gz”</code></p>
+<p>( from Jen the above is the correct url for the hypre installation)</p>
+<p><code>&gt;&gt; gunzip -c hypre-2.11.2.tar.gz | tar xf -</code></p>
+<blockquote>
+<blockquote>
+<p>mv hypre-2.11.2 hypre`</p>
+</blockquote>
+</blockquote>
+<p>(That would vary if the version number changes, and your HYPRE_DIR variable would need to reflect your version/directory names). Now onto the setup.</p>
+<pre><code>&gt;&gt; cd ~/ParF/ hypre/src
+
+&gt;&gt; ./configure --prefix=$HYPRE_DIR
+
+&gt;&gt; make install
+
+From Jen:
+
+If make install is not working and you receive a Fatal error mpi.h is not found: go into your bash_profile and change the two CC and CXX lines to the normal mpi complier
+
+export PARFLOW_DIR=~/ParF/parflow
+
+export HYPRE_DIR=~/ParF/hypre
+
+export SILO_DIR=~/ParF/silo
+
+export CC=mpicc
+
+export CXX=mpic++
+
+export FC=gfortran
+
+export F77=gfortran
+
+Once done: 
+
+Recompile via .configure --prefix=$HYPRE_DIR
+
+Then make install
+
+This should correct the previous error and allow you to install
+</code></pre>
+<p>This installation also takes a while to install, but it’s usually not as long as OpenMPI. You’re likely to see a lot of warnings about “could not find any symbols” but as long as there are <em>no errors</em> you should be able to move on to ParFlow.</p>
+<p>Step 6) Installing ParFlow</p>
+<p>This step is where we depart significantly from the previous installation instructions, but in a good way. The ParFlow build process is now more streamlined because it uses CMake. Instead of separate builds for pfsimulator (the model itself) and pftools (the controlling interface), there is one unified build process. There are a lot of different setup options for ParFlow but for our “typical” setup we’re assuming you want to run in parallel, you might want to run CLM, you have Silo and Hypre, and a few other little things.</p>
+<p>First, we need to download the code. ParFlow is hosted on GitHub, so to obtain the code:</p>
+<p><code>&gt;&gt; cd ~/ParF</code></p>
+<p><code>&gt;&gt; git clone https://github.com/parflow/parflow.git --branch master --single-branch_</code></p>
+<p>which will create a folder called parflow in ParF and now you’ve got the source code. You may want to rename the folder (I like to use the date I downloaded it so /parflow.20190209 for example) but you’ll need to update your PARFLOW_DIR too if you change that. I’m going to proceed assuming you have not renamed it.</p>
+<p>Next, we’ll create a directory for the incremental files of the build process called “build”</p>
+<p><code>&gt;&gt; mkdir build</code></p>
+<p><code>&gt;&gt; cd build</code></p>
+<p>The next step will tell CMake how to configure ParFlow using the typical options (copy and paste will be your friend on this):</p>
+<pre><code>&gt;&gt; cmake ../parflow -DCMAKE_INSTALL_PREFIX=$PARFLOW_DIR -DHYPRE_ROOT=$HYPRE_DIR -DPARFLOW_AMPS_LAYER=mpi1 -DPARFLOW_AMPS_SEQUENTIAL_IO=true -DPARFLOW_ENABLE_TIMING=true -DSILO_ROOT=$SILO_DIR -DPARFLOW_HAVE_CLM=ON
+</code></pre>
+<p>Note that if your parflow source tree is NOT in a folder called parflow, you’ll need to change that right after “cmake” in the above command. The manual provides a few extra details on how you can customize an installation using the “ccmake” interface but we don’t need that now. Next type:</p>
+<p><code>&gt;&gt; make</code></p>
+<p>and lots of stuff will happen. If the last two lines resemble:</p>
+<p><em>[100%] Linking C shared library libpftools.dylib</em></p>
+<p><em>[100%] Built target pftools</em></p>
+<p>Then you’re ready for the last command:</p>
+<p><code>&gt;&gt; make install</code></p>
+<p>The difference is that “make” builds everything in our temporary structure (the reason we created that build directory in the first), and “make install” copies the final build into our installation location.</p>
+<p>On a few computers we’ve found that after the “make” command you might see something like this:</p>
+<p><em>collect2: error: ld returned 1 exit status</em></p>
+<p><em>make[2]: *** [pftools/libpftools.dylib] Error 1</em></p>
+<p><em>make[1]: *** [pftools/CMakeFiles/pftools.dir/all] Error 2</em></p>
+<p><em>make: *** [all] Error 2</em></p>
+<p>If that’s the case, just back up and add “-DCMAKE_SHARED_LINKER_FLAGS=-ltcl8.5” to the end of that list for the “cmake” command, the “make” again and you should be all sorted out.</p>
+<p>And that’s it for the installation. The last step is to test the installation. Navigate to:</p>
+<p><code>&gt;&gt; cd ~/ParF/parflow/test                  {Or wherever you installed to}</code></p>
+<p>Then type:</p>
+<p><code>&gt;&gt; make check</code></p>
+<p>A lot of things will fly by as ParFlow verifies that it is working correctly. Most should pass, but some will likely fail if you have fewer processors than are being tested; for example, some of the tests need nine processors and these will fail on a system with only 4. You’ll see a report at the end and as long as most pass, you’re all done and ParFlow has been installed successfully.</p>
+<p>Step 7) Some troubleshooting tips</p>
+<p>The single most common reason steps of the installation don’t go well is not being in the correct path. You can always verify your location in the directory tree using the “pwd” command and each step tells you where you should be before you begin entering commands.</p>
+<p>You mac is also case-sensitive so pay attention to capitalization. That also tends to be a wrench in the gears of the setup process.</p>
+<p>If you prefer to use the c-shell instead of the bash-shell most of the steps are the same but your environment variables are defined differently. Fortunately, the setup example in the ParFlow manual outlines the c-shell variations of all the steps we covered here.</p>
+<p>Lastly, if you have MacPorts or any other “helper packages” your system paths may have been altered from the defaults. Defining the environment variables at the bottom of your .bash_profile should take care of this.</p>
+<p>If you’ve installed mpi properly but got errors with mpi, one solution can be turn off WIFI and keep WIFI off when running ParFLow.</p>
+<p>Step 8) What to do next</p>
+<p>See that wasn’t nearly as bad as you thought it was going to be, so now what? Well, you could start getting to work with ParFlow (which is totally what you should do if you’re a grad student), but maybe go outside, enjoy some fresh air, and see how things are today first. Maybe take a break and have a tasty beverage of your choosing while you ponder the intricacies of the scientific awesomeness you’re going to unleash upon the world using ParFlow.</p>
+<hr />
+<h2 id="macos-high-sierra">MacOS High Sierra</h2>
+<p><strong>Notes from Laura:  9/11/2018</strong></p>
+<p>Summary: Successful install: With GCC 8.1.0, MPI 3.1.2, Hypre 2.9.0b, Slio 4.10.2</p>
+<p>Only modification from PF Blog is that I compiled MPI with clang per Nick’s instructions (see the configure line below).  Also it didn’t work when I ran tests with WiFI on when I was at school (MPI error) but it worked once I turned it off. </p>
+<ul>
+<li>Edited the bash profile per the instructions in the Yosemite blog post: <a href="http://parflow.blogspot.com/2014/10/installing-parflow-in-os-x-yosemite.html">http://parflow.blogspot.com/2014/10/installing-parflow-in-os-x-yosemite.html</a></li>
+<li>Installed the latest GCC per blog instructions: <a href="http://hpc.sourceforge.net/">http://hpc.sourceforge.net/</a></li>
+<li>
+<p>After this it still wasn’t pointing to the correct gcc but this was fixed by a restart </p>
+<pre><code>dhcp-10-134-192-214:~ laura$ gcc --version
+
+gcc (GCC) 8.1.0
+
+Copyright (C) 2018 Free Software Foundation, Inc.
+
+This is free software; see the source for copying conditions.  There is NO
+
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+dhcp-10-134-192-214:~ laura$ gfortran --version
+
+GNU Fortran (GCC) 8.1.0
+
+Copyright (C) 2018 Free Software Foundation, Inc.
+
+This is free software; see the source for copying conditions.  There is NO
+
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</code></pre>
+</li>
+<li>
+<p>Next I got the latest MPI:<a href="https://www.open-mpi.org/software/ompi/v3.1/">https://www.open-mpi.org/software/ompi/v3.1/</a> </p>
+</li>
+</ul>
+<pre><code>  tar -xvf openmpi-3.1.2.tar.gz
+
+  cd openmpi-3.1.2
+
+./configure --prefix=/usr/local/ CC=/usr/bin/clang CXX=/usr/bin/clang
+
+  cd openmpi-3.1.2
+
+sudo make all install
+
+ompi_info 
+
+mpiexec —version
+
+mpirun —version
+</code></pre>
+<ul>
+<li>
+<p>Get Parflow:  git clone<a href="https://github.com/parflow/parflow"> https://github.com/parflow/parflow</a></p>
+<pre><code>                     mv parflow/ parflow.git
+</code></pre>
+</li>
+<li>
+<p>Get Silo: <a href="https://wci.llnl.gov/simulation/computer-codes/silo/downloads">https://wci.llnl.gov/simulation/computer-codes/silo/downloads</a></p>
+</li>
+</ul>
+<p>Follow instructions from ParFlow Blog to build:</p>
+<pre><code>&gt; cd silo
+
+&gt; ./configure --disable-silex
+
+&gt; make install
+
+&gt; cd ..
+</code></pre>
+<ul>
+<li>Get Hypre 2.9.0b:<a href="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods/software">https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods/software</a></li>
+</ul>
+<p>Follow instructions from ParFlow Blog to build:</p>
+<pre><code>&gt; tar -xvf hypre-2.9.0b.tar.gz
+
+&gt; mv hypre-2.9.0b hypre
+
+&gt; cd hypre/src
+
+&gt; ./configure --prefix=$HYPRE_DIR
+
+&gt; make install
+</code></pre>
+<ul>
+<li>Followed steps 7 and 8 from the blog to install par flow (<a href="http://parflow.blogspot.com/2014/10/installing-parflow-in-os-x-yosemite.html">http://parflow.blogspot.com/2014/10/installing-parflow-in-os-x-yosemite.html</a>) </li>
+<li>All tests were failing with an MPI error when I had wifi turned on but when I turned it off they all pass </li>
+</ul>
+<p><strong>Other People’s Notes on High Seirra:</strong></p>
+<p>From Nick:</p>
+<p>For MPI:</p>
+<p>Version 3.0.0</p>
+<ul>
+<li>Two catches to this though. 1) I had to use clang, and 2) I specified the path and compilers manually. Here’s the exact line I used:./configure --prefix=/usr/local/ CC=/usr/bin/clang CXX=/usr/bin/clang(FYI you can verify your MPI version with “ompi_info” at the command line and the version will be at the top)</li>
+</ul>
+<p>Next Hypre/Silo:</p>
+<p>It’s Hypre 2.9.0b and Silo 2.9.1. I haven’t tried any of the other versions lately, BUT these were installed with gcc, looks like v4.9.0 according to the config log</p>
+<p>And PF was built with the same GCC and gfortran version used for hypre. I had no luck getting PF to build with clang so, annoyingly, it’s exactly the opposite of openMPI.</p>
+<p>From Reed:</p>
+<p>/Users/reed/parflow/libraries&gt; gcc —version</p>
+<p>gcc (GCC) 5.0.0 20141005 (experimental)</p>
+<p>Copyright (C) 2014 Free Software Foundation, Inc.</p>
+<p>This is free software; see the source for copying conditions.  There is NO</p>
+<p>warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+<p>/Users/reed/parflow/libraries&gt; gfortran —version</p>
+<p>GNU Fortran (GCC) 5.0.0 20141005 (experimental)</p>
+<p>Copyright (C) 2014 Free Software Foundation, Inc.</p>
+<p>GNU Fortran comes with NO WARRANTY, to the extent permitted by law.</p>
+<p>You may redistribute copies of GNU Fortran</p>
+<p>under the terms of the GNU General Public License.</p>
+<p>For more information about these matters, see the file named COPYING</p>
+<hr />
+<h2 id="pfnetcdf-on-tacc-stampede2">PFNetCDF on TACC Stampede2</h2>
+<p>Katie Markovich, March 28, 2019</p>
+<p>Home directory = /home1/06175/khm293<strong> [make this your home directory!]</strong></p>
+<pre><code class="language-bsh">.**bashrc**
+
+module load git
+
+module load gcc
+
+  export CC=gcc
+
+  export CXX=g++
+
+  export FC=gfortran
+
+  export F77=gfortran
+
+  export NCDIR=/home1/06175/khm293/ParF/netcdf4
+
+  export H5DIR=/home1/06175/khm293/ParF/hdf5
+
+  export MPI_DIR=/home1/06175/khm293/ParF/OMP-4.0.0
+
+  export MPI_RUN_DIR=/home1/06175/khm293/ParF/OMP-4.0.0/bin
+
+  export HYPRE_DIR=/home1/06175/khm293/ParF/hypre
+
+  export SILO_DIR=/home1/06175/khm293/ParF/silo
+
+  export PARFLOW_DIR=/home1/06175/khm293/ParF/parflow
+
+  PATH=$PATH:$PARFLOW_DIR/bin
+
+**hdf5**
+</code></pre>
+<p>Download hdf5 here:<a href="https://www.hdfgroup.org/downloads/">https://www.hdfgroup.org/downloads/</a></p>
+<pre><code>&gt;&gt; cd ~                                    
+&gt;&gt; mkdir ParF
+&gt;&gt; cd ParF
+&gt;&gt;mkdir hdf5
+&gt;&gt;exportH5DIR=${HOME}/ParF/hdf5
+&gt;&gt;gunzip hdf5-1.10.4.tar.gz
+&gt;&gt;tar -xvf hdf5-1.10.4.tar
+&gt;&gt;cd hdf5-1.10.4/
+&gt;&gt;CC=mpicc ./configure --enable-parallel --prefix=${H5DIR}
+&gt;&gt;make
+&gt;&gt;make install
+&gt;&gt;cd ..
+</code></pre>
+<p><strong>netCDF4</strong></p>
+<p>Download netCDF4 here:<a href="https://www.unidata.ucar.edu/downloads/netcdf/index.jsp">https://www.unidata.ucar.edu/downloads/netcdf/index.jsp</a></p>
+<pre><code>&gt;&gt;mkdir ${HOME}/ParF/netcdf4
+&gt;&gt;exportNCDIR=${HOME}/ParF/netcdf4
+&gt;&gt;gunzip netcdf-4.6.2.tar.gz
+&gt;&gt;tar -xvf netcdf-4.6.2.tar
+&gt;&gt;cd netcdf-4.6.2/
+&gt;&gt;CC=mpicc CPPFLAGS=-I${H5DIR}/include LDFLAGS=-L${H5DIR}/lib \
+./configure --disable-shared--disable-dap--enable-parallel-tests --prefix=${NCDIR}
+&gt;&gt;make
+&gt;&gt;make install
+</code></pre>
+<p>From Nick’s post:</p>
+<p><strong>openMPI</strong></p>
+<pre><code>&gt;&gt; cd ~                                    
+&gt;&gt; cd ParF
+&gt;&gt; mkdir OMPI-4.0.0
+&gt;&gt; curl &quot;https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz&quot; -o &quot;openmpi-4.0.0.tar.gz&quot;
+&gt;&gt; gunzip -c openmpi-4.0.0.tar.gz | tar xf -
+&gt;&gt; cd openmpi-4.0.0
+&gt;&gt; ./configure --prefix=$MPI_DIR 
+&gt;&gt; make
+&gt;&gt; make install
+</code></pre>
+<p><strong>Silo</strong></p>
+<pre><code>&gt;&gt; cd ~/ParF
+&gt;&gt; curl &quot;https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2.tar.gz&quot; -o &quot;silo-4.10.2.tar.gz&quot;
+&gt;&gt; gunzip -c silo-4.10.2.tar.gz | tar xf -
+&gt;&gt; mv silo-4.10.2 silo
+&gt;&gt; cd silo
+&gt;&gt; ./configure --disable-silex
+&gt;&gt; make install
+</code></pre>
+<p><strong>Hypre</strong></p>
+<pre><code>&gt;&gt; cd ..
+&gt;&gt; cd ~/ParF
+&gt;&gt; curl &quot;https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods/download/hypre-2.11.2.tar.gz&quot; -o &quot;hypre-2.11.2.tar.gz&quot;
+&gt;&gt; gunzip -c hypre-2.11.2.tar.gz | tar xf –
+&gt;&gt; mv hypre-2.11.2 hypre
+&gt;&gt; cd ~/ParF/ hypre/src
+&gt;&gt; ./configure --prefix=$HYPRE_DIR 
+&gt;&gt; make install
+</code></pre>
+<p><strong>Parflow-NetCDF</strong></p>
+<pre><code>&gt;&gt; cd ~/ParF
+&gt;&gt; git clone https://github.com/parflow/parflow.git --branch master --single-branch
+&gt;&gt; mkdir build
+&gt;&gt; cd build
+&gt;&gt;cmake ../parflow -DCMAKE_INSTALL_PREFIX=$PARFLOW_DIR -DHYPRE_ROOT=$HYPRE_DIR -DPARFLOW_AMPS_LAYER=mpi1 -DPARFLOW_AMPS_SEQUENTIAL_IO=true -DPARFLOW_ENABLE_TIMING=true -DSILO_ROOT=$SILO_DIR -DPARFLOW_HAVE_CLM=ON -DNETCDF_DIR=$NCDIR -DHDF5_ROOT=$H5DIR
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cori/" class="btn btn-neutral float-left" title="Cori"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../verde/" class="btn btn-neutral float-right" title="Verde">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cori/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../verde/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

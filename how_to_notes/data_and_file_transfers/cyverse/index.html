@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://condon-lab.github.io/Condon_Lab_Docs/how_to_notes/data_and_file_transfers/cyverse/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>General Cyverse Information - Condon Research Group Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General Cyverse Information";
+        var mkdocs_page_input_path = "how_to_notes/data_and_file_transfers/cyverse.md";
+        var mkdocs_page_url = "/Condon_Lab_Docs/how_to_notes/data_and_file_transfers/cyverse/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Condon Research Group Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Condon Research Group Docs</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/pcard/">Pcard</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_autorization/">Information Regarding Travel Authorization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_reimbursement/">Information Regarding Reimbursement for Travel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Example scripts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../example_scripts/">Example scripts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Group meetings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../group_meetings/">Group Meetings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How to notes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">HPC systems</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/UA_HPC/">UA HPC Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/cheyenne/">Running on Cheyenne (NCAR)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/cori/">Cori</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/parflow_install/">ParFlow Install</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/verde/">Verde</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Data and file transfers</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../apple_remote_desktop_ssh/">Remote Desktop / SSH / Basic Command line</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">General Cyverse Information</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#description-running-notes-with-links-and-tips-for-doing-file-transfers-with-cyverse-feel-free-to-update-and-add-to-this-document-as-needed">Description:  Running notes with links and tips for doing file transfers with Cyverse.  Feel free to update and add to this document as needed.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-and-account-and-getting-access">Creating and Account and Getting Access:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-irods-so-you-can-do-command-line-transfers">Setting up irods so you can do command line transfers:</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../globus/">Globus File Transfer</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Useful external resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/great_python_packages/">Great python packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/parflow_resources/">Parflow resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/research_repos/">Research repos</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Condon Research Group Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How to notes</li>
+          <li class="breadcrumb-item">Data and file transfers</li>
+      <li class="breadcrumb-item active">General Cyverse Information</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="general-cyverse-information">General Cyverse Information</h1>
+<p><strong><em>Laura Condon, Jan 2019</em></strong></p>
+<h2 id="description-running-notes-with-links-and-tips-for-doing-file-transfers-with-cyverse-feel-free-to-update-and-add-to-this-document-as-needed"><strong>Description:  </strong>Running notes with links and tips for doing file transfers with Cyverse.  Feel free to update and add to this document as needed.</h2>
+<hr />
+<h2 id="creating-and-account-and-getting-access">Creating and Account and Getting Access:</h2>
+<p>In order to upload data, you need to create a Cyverse account and be given permissions by Laura. Provide the username of your account and the e-mail you used to create the account (your UA e-mail) to Laura. </p>
+<p><strong>Logging in:</strong></p>
+<p><a href="http://de.cyverse.org/">De.cyverse.org</a></p>
+<p><strong>Our Server:</strong></p>
+<ul>
+<li>You can find under Community Data/avra </li>
+<li>From command line: /iplant/home/shared/avra</li>
+</ul>
+<p><strong>GUI file transferring with cyberduck</strong></p>
+<p><a href="https://cyberduck-quickstart.readthedocs.io/en/latest/#">https://cyberduck-quickstart.readthedocs.io/en/latest/#</a></p>
+<h2 id="setting-up-irods-so-you-can-do-command-line-transfers">Setting up irods so you can do command line transfers:</h2>
+<ol>
+<li>Sign up for a cyverse account: <a href="https://user.cyverse.org/register">https://user.cyverse.org/register</a></li>
+<li>Install icommands so you can use irods<ul>
+<li>Instructions for setting up on Mac: <a href="https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-mac">https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-mac</a></li>
+<li>For setting up on Powell I used the page above and followed the link for the cent6</li>
+<li>To check OS: cat /etc/*release</li>
+<li>Needed root access to install the irods commands so I logged in as root and then did:</li>
+<li>sudo yum install<a href="https://files.renci.org/pub/irods/releases/4.1.10/centos6/irods-icommands-4.1.10-centos6-x86_64.rpm"> https://files.renci.org/pub/irods/releases/4.1.10/centos6/irods-icommands-4.1.10-centos6-x86_64.rpm</a></li>
+<li>Then login as your username and setup the cyverse connection according to step 3</li>
+</ul>
+</li>
+<li>Initialize irods by typing iinit and then putting in your user information following part two of the link on step 2</li>
+</ol>
+<p>**Command line transfers with irods: **</p>
+<p>First initialize irods like this:</p>
+<pre><code>* _iinit_
+* [data.cyverse.org](http://data.cyverse.org/)
+* Port: 1247
+* User: yourusername
+* Zone: iplant
+* Then enter your cyverse password
+</code></pre>
+<p>To upload: </p>
+<ul>
+<li>cd to the local directory with the data you want to transfer</li>
+<li>Then ‘icd’ to the location on Cyverse where you want to put the data<ul>
+<li>icd /iplant/home/shared/avra  #for avra</li>
+<li>icd /iplant/home/username #for your Cyverse home directory (note this is small and not where you should be storing things)</li>
+</ul>
+</li>
+<li>iput -vP “filename"</li>
+<li>To batch upload: iput -K -P -b -r -T folder-where-you-want-files-on-cyverse/<ul>
+<li>If you icd to where you want to put your files on cyverse then you simply need to put a period after the iput command’<ol>
+<li>iput -K -P -b -r -T .</li>
+</ol>
+</li>
+<li>-K “This causes iCommands to verify that transferred files weren't corrupted during the transfer by comparing the Checksums computed before and after the transfer.”</li>
+<li>-P provides progress feedback</li>
+<li>-b allows for bulk uploads</li>
+<li>-r includes a folder or directory</li>
+<li>-T renews socket connection every 10 min</li>
+</ul>
+</li>
+<li>If its a tar file you can extract it on Cyverse like this:<ul>
+<li>ibun -x filename.tar new</li>
+<li><a href="https://wiki.cyverse.org/wiki/display/DS/Dealing+with+Tar+and+other+Archive+Files">https://wiki.cyverse.org/wiki/display/DS/Dealing+with+Tar+and+other+Archive+Files</a></li>
+<li>**** You need to keep it to less than 2GB and several hundred files per Tar or the unzip ibun will fail. **</li>
+</ul>
+</li>
+</ul>
+<p>To Download:</p>
+<ul>
+<li>Basically the same thing but with iget instead of iput </li>
+</ul>
+<p><strong>Links with irods info:</strong></p>
+<p>icommands help: <a href="https://wiki.cyverse.org/wiki/display/DS/Using+iCommands">https://wiki.cyverse.org/wiki/display/DS/Using+iCommands</a></p>
+<p><strong>Setting up irods commands for R:</strong></p>
+<ul>
+<li>You should be able to run i commands in R using the system function. e.g. system(‘ils')</li>
+<li>If you get a warning saying command not found even though you have them installed you probably need to modify your R path so it can find them.  To check this echo $PATH on command line and compare with system(‘echo $PATH) within R (You can also check this with Sys.getevn() to see everything or Sys.getenv("PATH”) to just see the path in R)</li>
+<li>To fix you can set a new path appending the icommands to your current path like this: Sys.setenv(PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/icommands')</li>
+<li>Then you also need to add the plugin: Sys.setenv(IRODS_PLUGINS_HOME="/Applications/icommands/plugins/")</li>
+<li>Then check the path and check that it worked using getenv and testing an icommand. </li>
+<li>NOTE: If you get an irods host error at this point its probably because you haven’t run iiint </li>
+<li>PERMANENT Fix:  If you don’t want to have to add the Sys.setenv to every script then do the following:<ul>
+<li>vi ~/.Rprofile   (just make the file if you don’t have one)</li>
+<li>Add the following lines:<ul>
+<li>Sys.setenv(PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/icommands')</li>
+<li>Sys.setenv(IRODS_PLUGINS_HOME="/Applications/icommands/plugins/")</li>
+</ul>
+</li>
+<li>Note this will permanently set your environment variables</li>
+</ul>
+</li>
+</ul>
+<p><strong>Running an Analysis on Atmospheres</strong></p>
+<p><strong>Steps to run on the Cyverse Rstudio App</strong></p>
+<ul>
+<li>Login: <a href="http://de.cyverse.org/">de.cyverse.org</a> </li>
+<li>Click on Apps - Search for ‘Rstudio’</li>
+<li>Select ‘rocker-geospatial-3.5.0’ # you can also add it to your favorites</li>
+<li>Give your analysis a name - you don’t have to change anything though if you don’t want</li>
+<li>Click ‘Launch Analysis’</li>
+<li>Then if you click on ‘Analyses’ on the left you should see the job you just launched it will say ‘running’ but its probably still initializing. </li>
+<li>Click on the arrow next to its name to open the tab and you will see it launching your application.  </li>
+<li>You will need to login to Cyverse and then R studio the first time it launches.For Rstudio the username and password are both rstudio </li>
+<li>Once you are in Rstudio - click on the terminal window<ol>
+<li>iinit<ul>
+<li><a href="http://data.cyverse.org/">data.cyverse.org</a></li>
+<li>Port: 1247</li>
+<li>User: lecondon</li>
+<li>Zone: iplant</li>
+</ul>
+</li>
+<li>Checkout the GitHub repo<ul>
+<li>git clone <a href="https://github.com/lecondon/CONUS1_Warming.git">https://github.com/lecondon/CONUS1_Warming.git \
+</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Once you have done this you will see ‘CONUS1_Warming’ in your files tab</li>
+<li>Go to R scripts and click on the Rmd file you can run from here </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../apple_remote_desktop_ssh/" class="btn btn-neutral float-left" title="Remote Desktop / SSH / Basic Command line"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../globus/" class="btn btn-neutral float-right" title="Globus File Transfer">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../apple_remote_desktop_ssh/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../globus/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

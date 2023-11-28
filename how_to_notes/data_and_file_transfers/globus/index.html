@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://condon-lab.github.io/Condon_Lab_Docs/how_to_notes/data_and_file_transfers/globus/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Globus File Transfer - Condon Research Group Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Globus File Transfer";
+        var mkdocs_page_input_path = "how_to_notes/data_and_file_transfers/globus.md";
+        var mkdocs_page_url = "/Condon_Lab_Docs/how_to_notes/data_and_file_transfers/globus/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Condon Research Group Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Condon Research Group Docs</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/pcard/">Pcard</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_autorization/">Information Regarding Travel Authorization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_reimbursement/">Information Regarding Reimbursement for Travel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Example scripts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../example_scripts/">Example scripts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Group meetings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../group_meetings/">Group Meetings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How to notes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">HPC systems</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/UA_HPC/">UA HPC Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/cheyenne/">Running on Cheyenne (NCAR)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/cori/">Cori</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/parflow_install/">ParFlow Install</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../HPC_systems/verde/">Verde</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Data and file transfers</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../apple_remote_desktop_ssh/">Remote Desktop / SSH / Basic Command line</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cyverse/">General Cyverse Information</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Globus File Transfer</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-account">Setting up Account:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-up-endpoints">Set-up Endpoints:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transfering-files">Transfering Files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#extra-information-for-ncar-hpc-cheyenne">Extra Information for NCAR HPC (Cheyenne):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#information-for-google-drive-transfers">Information for Google Drive transfers:</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Useful external resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/great_python_packages/">Great python packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/parflow_resources/">Parflow resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/research_repos/">Research repos</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Condon Research Group Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How to notes</li>
+          <li class="breadcrumb-item">Data and file transfers</li>
+      <li class="breadcrumb-item active">Globus File Transfer</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="globus-file-transfer">Globus File Transfer</h1>
+<p><strong><em>Abe, May 8th, 2020</em></strong></p>
+<h2 id="description">Description</h2>
+<p>Setting up and using globus to transfer files between a local machine and server (uahpc)</p>
+<p><strong>Software:  </strong>Globus, UAHPC</p>
+<p><strong>Datasets: </strong>N/A</p>
+<p><strong>Links: <a href="https://www.globus.org/">https://www.globus.org/</a></strong></p>
+<hr />
+<p>Globus provides a simple way to transfer files between a local device and a server account instead of using scp or another file transfer method. It is especially useful for large sets of files. </p>
+<h2 id="setting-up-account">Setting up Account:</h2>
+<p>A good reference: <a href="https://www.osc.edu/book/export/html/3578">https://www.osc.edu/book/export/html/3578</a></p>
+<ol>
+<li>To Login: Visit <strong><a href="https://www.globus.org/">https://www.globus.org/</a></strong>, go to login and select “The University of Arizona”</li>
+<li>You will be prompted to login with your UA NetID</li>
+</ol>
+<h2 id="set-up-endpoints">Set-up Endpoints:</h2>
+<p>Endpoints are essentially paths that are linked and configured for streamlined file transfer. Personal endpoints can be setup for personal systems: research desktop or personal laptop</p>
+<ol>
+<li>When logged-in, click on “endpoints” on the left panel</li>
+<li>At the top select “create personal endpoint”</li>
+<li>Download Globus Connect Personal (follow the install instructions)<ol>
+<li>You can select the default home directory or specify a different directory for the endpoint if you wish</li>
+<li>You will also name the endpoint (ex: “Abe’s Research Desktop”)</li>
+</ol>
+</li>
+<li>You should now have a personal endpoint for the device which you are currently working on</li>
+</ol>
+<h2 id="transfering-files">Transfering Files</h2>
+<p>To transfer files between this personal endpoint and the UAHPC server, you will have to search for it on the globus website:</p>
+<ol>
+<li>When logged-in, click on “file manager” on the left panel</li>
+<li>The left panel is where you want to transfer from...so to transfer something from your desktop click in the “collections” search bar and select the personal endpoint that you just created (for ex: “Abe’s Research Desktop”)<ol>
+<li>From here you can navigate the system for the directory or files that you wish to transfer</li>
+</ol>
+</li>
+<li>On the right window panel is where you will select the server endpoint (or another personal endpoint). For UAHPC you search <strong>UA HPC Filesystems</strong><ol>
+<li>More info found here: <a href="https://public.confluence.arizona.edu/display/UAHPC/Transferring+Files">https://public.confluence.arizona.edu/display/UAHPC/Transferring+Files</a></li>
+</ol>
+</li>
+<li>Once in the UA server you can navigate your UAHPC directories and go to where you want to transfer the files. (I had to physically type in the directory I wanted on the HPC)</li>
+<li>Click “Start” once the correct file and directories are selected. Note you can transfer to/from either endpoint</li>
+<li>You’ll get a confirmation email once it was successfully transferred</li>
+</ol>
+<p>Other links and resources:</p>
+<p>Install guide of Mac: <a href="https://docs.globus.org/how-to/globus-connect-personal-mac/">https://docs.globus.org/how-to/globus-connect-personal-mac/</a></p>
+<p>Penn State Explanation: <a href="https://www.youtube.com/watch?v=iIfeVxplZ8U">https://www.youtube.com/watch?v=iIfeVxplZ8U</a></p>
+<p><img alt="alt_tet" src="../../../images/globus.png" /></p>
+<h2 id="extra-information-for-ncar-hpc-cheyenne">Extra Information for NCAR HPC (Cheyenne):</h2>
+<p>This link has helpful resources: <a href="https://www2.cisl.ucar.edu/resources/storage-and-file-systems/globus-file-transfers">https://www2.cisl.ucar.edu/resources/storage-and-file-systems/globus-file-transfers</a> </p>
+<ol>
+<li>Log in to your Globus account </li>
+<li>Go to File manager</li>
+<li>Go to panel view so you can see the source and destination of your files </li>
+<li>Type NCAR GLADE into the collection for either source or destination, select your personal endpoint for the other </li>
+<li>You will be asked to log in, use your normal log in credentials when you are accessing NCAR resources through terminal <ol>
+<li>Click advanced and for certificate length type ‘720’ this will allow you to extend the credential to 30 days as opposed to the usual 24 </li>
+</ol>
+</li>
+<li>You will authenticate your log in whatever way you have it set up, likely Duo</li>
+<li>Go to /glade/scratch/”your_username” and you should see the file tree as you have it set up </li>
+<li>Start transfer!</li>
+</ol>
+<h2 id="information-for-google-drive-transfers">Information for Google Drive transfers:</h2>
+<p>Follow the steps in the link below to setup your Google Drive account as an endpoint.</p>
+<p><a href="https://public.confluence.arizona.edu/display/UAHPC/Transferring+Files#TransferringFiles-GoogleDrive">https://public.confluence.arizona.edu/display/UAHPC/Transferring+Files#TransferringFiles-GoogleDrive</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cyverse/" class="btn btn-neutral float-left" title="General Cyverse Information"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../useful_external_resources/great_python_packages/" class="btn btn-neutral float-right" title="Great python packages">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cyverse/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../useful_external_resources/great_python_packages/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

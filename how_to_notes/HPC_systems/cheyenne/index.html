@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://condon-lab.github.io/Condon_Lab_Docs/how_to_notes/HPC_systems/cheyenne/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Running on Cheyenne (NCAR) - Condon Research Group Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Running on Cheyenne (NCAR)";
+        var mkdocs_page_input_path = "how_to_notes/HPC_systems/cheyenne.md";
+        var mkdocs_page_url = "/Condon_Lab_Docs/how_to_notes/HPC_systems/cheyenne/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Condon Research Group Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Condon Research Group Docs</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/pcard/">Pcard</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_autorization/">Information Regarding Travel Authorization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_reimbursement/">Information Regarding Reimbursement for Travel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Example scripts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../example_scripts/">Example scripts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Group meetings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../group_meetings/">Group Meetings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How to notes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">HPC systems</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../UA_HPC/">UA HPC Information</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Running on Cheyenne (NCAR)</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#software">Software</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accessing-and-logging-in-to-cheyenne">Accessing and logging in to Cheyenne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updating-your-bash-profile-and-loading-modules">Updating your bash profile and loading modules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-files-to-and-from-cheyenne-using-scp">Getting files to and from Cheyenne using scp</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#editing-and-saving-files-within-cheyenne">Editing and Saving Files within Cheyenne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#job-scripts-running-your-tcl-checking-your-status-and-killing-your-job">Job Scripts, running your TCL, checking your status and killing your job</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#run-the-executable">Run the executable</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#checking-your-core-hour-usage">Checking your Core Hour Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#misc-info">Misc. info</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-icommands-on-cheyenne">Installing icommands on Cheyenne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-with-python-on-cheyenne">Running with Python on Cheyenne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-a-new-version-of-parflow-on-cheyenne-082020-from-mm-at-csm">Building a New Version of ParFlow on Cheyenne (08/2020) from MM at CSM</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cori/">Cori</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../parflow_install/">ParFlow Install</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../verde/">Verde</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Data and file transfers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/apple_remote_desktop_ssh/">Remote Desktop / SSH / Basic Command line</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/cyverse/">General Cyverse Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/globus/">Globus File Transfer</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Useful external resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/great_python_packages/">Great python packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/parflow_resources/">Parflow resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/research_repos/">Research repos</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Condon Research Group Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How to notes</li>
+          <li class="breadcrumb-item">HPC systems</li>
+      <li class="breadcrumb-item active">Running on Cheyenne (NCAR)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="running-on-cheyenne-ncar">Running on Cheyenne (NCAR)</h1>
+<p>**Amanda Triplett **</p>
+<p><strong>Original: </strong>12/2019</p>
+<p><strong>Update: </strong>08/2020</p>
+<h2 id="description">Description</h2>
+<p>** **This gives an overview with examples of how to remotely access HPC resources at NCAR (specifically Cheyenne), update your bash profile and modules, an example job_script with the commands Cheyenne needs to run, how to run and check your job as well as useful information to transfer and edit your files. </p>
+<h2 id="software">Software</h2>
+<p>No specific software is needed, you do need an account with NCAR and an HPC time allotment in order to access resources. Everything can be done through your terminal. </p>
+<h2 id="accessing-and-logging-in-to-cheyenne">Accessing and logging in to Cheyenne</h2>
+<pre><code>Open your terminal and type the following:
+
+
+
+1. ssh -Y -l “your_username” cheyenne.ucar.edu
+    1. _Note:_ Macs often need the -Y and -l commands
+    2. If it asks if you want to continue connecting, say yes
+2. Enter your password 
+    3. You probably already set up duo when you set up your account, look on NCARs website for Cheyenne or call the help desk
+3. You’re logged in!
+
+Go to your scratch folder
+
+4. Every user starts with a scratch folder under their username, once you navigate here, you can create file directories just as you do on your own computer
+    4. cd /glade/scratch/”your_username”
+    5. Mkdir “new_directory_name”
+</code></pre>
+<h2 id="updating-your-bash-profile-and-loading-modules">Updating your bash profile and loading modules</h2>
+<ol>
+<li>
+<p>Make any necessary updates to your bash profile, directions below are requiredif you want to run ParFlow - you should only need to do this <strong>once</strong> and make sure you go to your scratch folder <strong>first</strong></p>
+<ol>
+<li><code>vim ~/.bash_profile</code></li>
+<li><code>export PARFLOW_DIR=/glade/p/univ/ucsm0002/parflow3.7_0826_2020/parflow</code></li>
+<li><code>export HYPRE_DIR=/glade/p/univ/ucsm0002/hypre/2.10.1</code></li>
+<li><code>export SILO_DIR=/glade/p/univ/ucsm0002/silo/4.10.2</code></li>
+<li>
+<p><code>source ~/.bash_profile</code></p>
+</li>
+<li>
+<p>Make sure correct modules are loaded</p>
+</li>
+</ol>
+</li>
+<li>
+<p><em>Note:</em> This may not always be necessary to do manually, but if you get errors such as mpi not loading correctly, load all the modules and see if that solves the problem. You <strong>do </strong>have to re-load the modules each time.</p>
+</li>
+<li>
+<p>Type command: <code>module list</code> 
+        a. You’ll probably see something like below if you haven’t made any changes:
+        b. <em>Currently Loaded Modules:</em>
+            1. <em>1) ncarenv/1.3   2) intel/18.0.5   3) ncarcompilers/0.5.0   4) mpt/2.19   5) netcdf/4.6.3</em></p>
+</li>
+<li>
+<p>Load the modules you need (example. below) </p>
+<pre><code>c. aktriplett@cheyenne4:/glade/scratch/aktriplett&gt; module load cmake
+8. aktriplett@cheyenne4:/glade/scratch/aktriplett&gt; module load nco
+e. aktriplett@cheyenne4:/glade/scratch/aktriplett&gt; module load ncl
+f. aktriplett@cheyenne4:/glade/scratch/aktriplett&gt; module load ncview
+g. aktriplett@cheyenne4:/glade/scratch/aktriplett&gt; module load R
+h. aktriplett@cheyenne4:/glade/scratch/aktriplett&gt; module list
+</code></pre>
+</li>
+<li>
+<p>After you load the modules your list will look like this: </p>
+<pre><code>Currently Loaded Modules:
+
+1) ncarenv/1.3    3) ncarcompilers/0.5.0   5) netcdf/4.6.3   7) nco/4.7.9   9) ncview/2.1.7
+
+2) intel/18.0.5   4) mpt/2.19              6) cmake/3.14.4   8) ncl/6.6.2  10) R/3.6.0
+</code></pre>
+</li>
+</ol>
+<h2 id="getting-files-to-and-from-cheyenne-using-scp">Getting files to and from Cheyenne using scp</h2>
+<p><strong>NOTE:</strong> This is an inferior method to using <strong>Globus</strong>, see the getting started on Globus notes in the Methods section.</p>
+<ol>
+<li>Getting files to Cheyenne<ol>
+<li>To copy from <strong>your</strong> computer <strong>to</strong> Cheyenne:<ol>
+<li>Navigate to the folder where your file is</li>
+<li>scp <code>“your_file_name” “your_user_name”@data-access.ucar.edu:/glade/scratch/”your_user_name”/”the rest of the path to where you want the file”</code></li>
+</ol>
+</li>
+<li>To copy <strong>from</strong> Cheyenne <strong>to your</strong> computer<ol>
+<li>Navigate to the folder where you want the files</li>
+<li><code>scp “your_user_name”@data-access.ucar.edu:/glade/scratch/”your_user_name”/”the rest of the path to where you want the file”</code> .</li>
+<li>You can use a <code>*.{“file_ext”}</code> to scp multiple files of the same type<ol>
+<li><code>scp “your_user_name”@data-access.ucar.edu:/glade/scratch/”your_user_name”/”the rest of the path to where you want the file”/*.{file_ext1, file_ext2}</code> .</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Moving files within Cheyenne<ol>
+<li>Navigate to where the file is now
+14.<code>mv “file_name” “destination_file_path”</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="editing-and-saving-files-within-cheyenne">Editing and Saving Files within Cheyenne</h2>
+<ol>
+<li>To open a file <ol>
+<li><code>vi “file_name”</code></li>
+<li>To make a change, type <code>i</code> for insert </li>
+<li>Click escape to stop making changes </li>
+<li>Type <code>zz</code>to save</li>
+<li>Type <code>shift zz</code> to save and exit </li>
+<li>Type <code>:x</code> to exit without saving </li>
+</ol>
+</li>
+</ol>
+<h2 id="job-scripts-running-your-tcl-checking-your-status-and-killing-your-job">Job Scripts, running your TCL, checking your status and killing your job</h2>
+<ol>
+<li>You need a job_script for Cheyenne to run your job. There will be a tclsh call at the end of this that will call your tcl script and run your job. <ol>
+<li>Below is an example job script</li>
+</ol>
+</li>
+</ol>
+<pre><code class="language-bash">#!/bin/bash
+
+#PBS -N HRB_PLtest1 -&gt; this is what your run will be called
+
+#PBS -A UCSM0009 -&gt; your award number
+
+#PBS -l walltime=01:00:00 -&gt; clock time before your script is killed
+
+#PBS -q regular -&gt; specify your queue, r is regular but there is also debug
+
+#PBS -j oe
+
+#PBS -o log1.oe -&gt; name of the run log file you get
+
+#PBS -m abe
+
+#PBS -M [aktriplett@email.arizona.edu](mailto:aktriplett@email.arizona.edu) -&gt; add this line to get run e-mail updates
+
+#PBS -l select=12:ncpus=36:mpiprocs=36 -&gt; the processors or computing resources you are requesting
+</code></pre>
+<h3 id="run-the-executable">Run the executable</h3>
+<p><code>tclsh HRB_parkinglot.tcl</code> -&gt; the name of your tcl script</p>
+<ol>
+<li>Useful link with info about anatomy and making of pbs scripts:<ol>
+<li><a href="https://www.scribd.com/document/359446973/PBS-Queue-Commands">https://www.scribd.com/document/359446973/PBS-Queue-Commands</a></li>
+</ol>
+</li>
+<li>
+<p>Commands for run scripts</p>
+<ol>
+<li>qsub “script_name” <ol>
+<li>This runs your job</li>
+</ol>
+</li>
+<li><code>qstat -u “your_username”</code> <ol>
+<li>Check on the status of your job </li>
+<li>Add <code>alias qjobs="qstat -u $USER"</code> to your bash profile to check your job status using ‘qjobs’</li>
+</ol>
+</li>
+</ol>
+<p>c.<code>Qdel “job_number”</code></p>
+<p>i. Kill your job</p>
+</li>
+</ol>
+<h2 id="checking-your-core-hour-usage">Checking your Core Hour Usage</h2>
+<ol>
+<li>Follow this link to the Systems Accounting Manager (SAM) system <ol>
+<li><a href="https://sam.ucar.edu/app/home">Sam.ucar.edu</a></li>
+<li>You can also look at this link for additional information about what is available on SAM <ol>
+<li><a href="https://www2.cisl.ucar.edu/user-support/systems-accounting-manager">https://www2.cisl.ucar.edu/user-support/systems-accounting-manager</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Log-in to the SAM system using your regular log-in info, you will have to authenticate with Duo push as well</li>
+<li>One logged in, you can go to the reports tab to track your usage activity, it will look something like this:</li>
+</ol>
+<p><img alt="cheyenne usage hours" src="../../../images/cheyenne_usage.png" /></p>
+<h2 id="misc-info">Misc. info</h2>
+<ol>
+<li>Information about where to store / what directories to make can be put in the tcl script, it will make whatever folder / file tree you specify in your scratch directory</li>
+<li>The amount of storage available on the scratch directory shouldn’t be an issue for most runs</li>
+<li>To transfer files to and from the scratch directory, you can just scp from the scratch folder to home computer and back again, there is no special node to do this on or way like the UAHPC</li>
+<li>You can check log outputs to see if there are any errors</li>
+</ol>
+<h2 id="installing-icommands-on-cheyenne">Installing icommands on Cheyenne</h2>
+<p>It is possible to install icommands on Cheyenne without any additional privilege in your own directory. _Icommands if NOT natively installed on Cheyenne unlike UAHPC. _Detailed can be found here, <a href="https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-co">https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-co</a></p>
+<ol>
+<li>Download the installer to your local computer (links can be found in <a href="https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-co">https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-co</a>) and upload to your directory in Cheyenne.<ol>
+<li>Download the <strong>ubuntu 14 version for unprivileged users</strong></li>
+</ol>
+</li>
+<li>
+<p>In your Cheyenne directory with the installer, type or copy command:</p>
+<p><code>sh irods-icommands-4.1.10-ubuntu-14.installer</code></p>
+<p>Then you will see:</p>
+<pre><code>    Where would you like to install it? [/home/cyverse-user]
+    Expanding contents under /home/cyverse-user.
+    Updating .bashrc
+    done!
+</code></pre>
+</li>
+<li>
+<p>To make the changes take effect in the current shell, you will need to source your .bashrc file (<code>vim ~/.bash_profile</code>). The following lines should be added:</p>
+</li>
+</ol>
+<pre><code># iRODS iCommands support
+export  IRODS_PLUGINS_HOME=/glade/u/home/yourusername/icommands/plugins/
+export PATH=/glade/u/home/yourusername/icommands:$PATH
+
+</code></pre>
+<ol>
+<li>Open a new terminal window, if necessary, and run <code>ienv</code> to check that the new version was installed.</li>
+<li>
+<p>initialise your account:</p>
+<pre><code>_iinit_
+
+[data.cyverse.org](http://data.cyverse.org/)
+
+Port: 1247
+
+User: yourusername
+
+Zone: iplant
+
+Then enter your cyverse password
+</code></pre>
+</li>
+<li>
+<p>Then you can start use icommands.</p>
+</li>
+</ol>
+<h2 id="running-with-python-on-cheyenne">Running with Python on Cheyenne</h2>
+<ul>
+<li>
+<p>General instructions of how to get running with python can be found at: </p>
+<ul>
+<li><a href="https://www2.cisl.ucar.edu/resources/python-–-ncar-package-library">https://www2.cisl.ucar.edu/resources/python-–-ncar-package-library</a></li>
+</ul>
+</li>
+<li>
+<p>In order to install your own packages, you will have to create your own virtual environment after following the steps in the above page and then activate as follows: </p>
+<ul>
+<li>NOTE: You do not have permission to write in the ncar virtual env, so to install packages not included there, you have to create your own</li>
+</ul>
+<p><code>ncar_pylib -c 20201220 /glade/work/$USER/my_npl_clone</code></p>
+</li>
+</ul>
+<pre><code>    ncar_pylib my_npl_clone
+    pip --no-cache-dir install PACKAGE_NAME
+
+</code></pre>
+<ul>
+<li>If your virtualenv stops working, you may have to delete it and create a new one, just follow the above steps again and you should be good</li>
+</ul>
+<h2 id="building-a-new-version-of-parflow-on-cheyenne-082020-from-mm-at-csm">Building a New Version of ParFlow on Cheyenne (08/2020) from MM at CSM</h2>
+<p><em>Adding specific ParFlow Builds to your bash profile. This is an example for a specific version, you need to add the path to the version you want to use after export:</em></p>
+<p><code>vim ~/.bash_profile</code>.</p>
+<pre><code>export PARFLOW_DIR=/glade/p/univ/ucsm0002/parflow_build/parflow #(this is the folder where you will put the new version of Parflow)
+export HYPRE_DIR=/glade/p/univ/ucsm0002/hypre/2.10.1
+export SILO_DIR=/glade/p/univ/ucsm0002/silo/4.10.2
+</code></pre>
+<p><em>Build instructions</em></p>
+<p><em>Please load the following modules:</em></p>
+<pre><code>module load impi
+module load intel/17.0.1
+module load cmake
+</code></pre>
+<p>To see which modules are available, use command <code>module avail</code>. To check which modules you have loaded, you can use  <code>module list</code>. For me, this returns:</p>
+<pre><code>Currently Loaded Modules:
+1) ncarenv/1.3    3) ncarcompilers/0.5.0   5) cmake/3.14.4       7) nco/4.7.9      9) netcdf/4.6.3
+2) intel/17.0.1   4) impi/2017.1.132       6) ncl/6.6.2    (H)   8) ncview/2.1.7  10) R/3.6.0
+</code></pre>
+<p>I was able to follow the typical installing directions for Silo and Hypre (from the parflow blog) and set them in my bash profile. </p>
+<p>Then just follow the cmake workflow for installing parflow:</p>
+<p><code>cd ~/glade/p/univ/ucsm0002/parflow_build</code>(or wherever)</p>
+<pre><code>git clone -b master http://github.com/parflow/parflow.git 
+</code></pre>
+<p><code>export PARFLOW_DIR=~//glade/p/univ/ucsm0002/parflow_build/parflow</code>(or wherever. Add to bash_profile.)</p>
+<pre><code class="language-bash">cd $PARFLOW_DIR
+mkdir build
+cd build
+
+cmake .. -DCMAKE_INSTALL_PREFIX=$PARFLOW_DIR -DPARFLOW_AMPS_LAYER=mpi1 -DPARFLOW_ENABLE_TIMING=TRUE -DHYPRE_ROOT=$HYPRE_DIR -DSILO_ROOT=$SILO_DIR -DPARFLOW_HAVE_CLM=ON -DPARFLOW_AMPS_SEQUENTIAL_IO=TRUE
+
+make
+make install
+
+</code></pre>
+<ol>
+<li>Go to where you installed </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../UA_HPC/" class="btn btn-neutral float-left" title="UA HPC Information"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cori/" class="btn btn-neutral float-right" title="Cori">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../UA_HPC/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cori/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

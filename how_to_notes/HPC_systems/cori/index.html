@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://condon-lab.github.io/Condon_Lab_Docs/how_to_notes/HPC_systems/cori/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Cori - Condon Research Group Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Cori";
+        var mkdocs_page_input_path = "how_to_notes/HPC_systems/cori.md";
+        var mkdocs_page_url = "/Condon_Lab_Docs/how_to_notes/HPC_systems/cori/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Condon Research Group Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Condon Research Group Docs</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/pcard/">Pcard</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_autorization/">Information Regarding Travel Authorization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../admin/travel_reimbursement/">Information Regarding Reimbursement for Travel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Example scripts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../example_scripts/">Example scripts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Group meetings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../group_meetings/">Group Meetings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How to notes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">HPC systems</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../UA_HPC/">UA HPC Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cheyenne/">Running on Cheyenne (NCAR)</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Cori</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#useful-links">Useful links</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#obtaining-an-account">obtaining an account</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#globus">Globus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-environments">Setting environments</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-run-parflow">To run parflow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#monitoring-your-job">Monitoring your job</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../parflow_install/">ParFlow Install</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../verde/">Verde</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Data and file transfers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/apple_remote_desktop_ssh/">Remote Desktop / SSH / Basic Command line</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/cyverse/">General Cyverse Information</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data_and_file_transfers/globus/">Globus File Transfer</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Useful external resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/great_python_packages/">Great python packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/parflow_resources/">Parflow resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../useful_external_resources/research_repos/">Research repos</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Condon Research Group Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How to notes</li>
+          <li class="breadcrumb-item">HPC systems</li>
+      <li class="breadcrumb-item active">Cori</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cori">Cori</h1>
+<p><strong>Jun Zhang, 04/24/2019</strong></p>
+<h2 id="description">Description</h2>
+<p>Running notes with links and tips for running ParFlow on Cori. Feel free to update and add to this document as needed. </p>
+<h2 id="useful-links">Useful links</h2>
+<p>Getting started: <a href="http://www.nersc.gov/users/computational-systems/cori/">http://www.nersc.gov/users/computational-systems/cori/</a>
+Slides for a short training course are available at Reference Docs/Cori_Training_course</p>
+<h2 id="obtaining-an-account">obtaining an account</h2>
+<p>** Sep/2021 **
+Apply an account according to the instructions <a href="https://docs.nersc.gov/accounts">here</a>. Obtain the project number before applying the account.</p>
+<p>** Mar/2019 **
+Ask Laura to create a username for you at the NERSC, you will get an email to submit an application. Once they approve it, a second email will be sent to active the account (have to be activated within 72 hours).</p>
+<h2 id="logging-in">Logging in</h2>
+<ol>
+<li>Before you can login any host, you have to create a MFA token for your accounts, instructions are available in <a href="https://docs.nersc.gov/connect/mfa/">https://docs.nersc.gov/connect/mfa/</a> </li>
+<li>Log onto cori with you NERSC username, password and OTP(one-time password) from your token. Our repo number is m2511 (this project is no longer activated).
+<code>ssh username@cori.nersc.gov</code></li>
+<li>The CONUS project directory is (this project is no longer activated).
+    <code>/project/projectdirs/m2511</code></li>
+<li>You should change your default shell to bash and you can do it by logging into  nim.nersc.gov. In the ‘Profile’ tab, scroll down to ‘Server Login’, click the ‘Edit’ option of ‘cori’, choose ‘/bin/bash’ in the ‘Login Shell’.
+Transferring files
+Use scp to transfer files between your local machine and cori for small transfer.
+<code>scp your/local/file username@cori.nersc.gov:your/cori/directory</code></li>
+</ol>
+<h2 id="globus">Globus</h2>
+<p>the recommended tool for moving data in and out of NERSC for large transfers
+<a href="http://www.globus.org/">http://www.globus.org/</a> or <a href="http://globus.nersc.gov/">http://globus.nersc.gov/</a>
+See also the group notes on <a href="../../data_and_file_transfers/globus/">Globus</a></p>
+<p>User scratch directory: <code>/global/cscratch1/sd/yourusername</code></p>
+<h2 id="setting-environments">Setting environments</h2>
+<p><a href="https://docs.nersc.gov/environment/">https://docs.nersc.gov/environment/</a> NOTE that you should not modify your bash_profile directly. Instead you make changes to .bash_profile.ext (mine is here: /global/homes/j/jzhang55). Also note that your home directory is the same across Cori and Hopper and you can put settings in this file that are specific to what machine you are running on. 
+You should add PARFLOW_DIR in your .bash_profile.ext as following:</p>
+<p><code>export PARFLOW_DIR=/global/project/projectdirs/m2511/parflow/cori-v3.7.0-11-gf70ce58-2021-07-14</code>
+Running scripts
+<a href="https://docs.nersc.gov/jobs/">https://docs.nersc.gov/jobs/</a>
+You cannot run on your own directory, have to submit a job to the queue. Check out the queue policies because they have different ‘charge factors’ for different queues:
+<a href="https://docs.nersc.gov/jobs/policy/">https://docs.nersc.gov/jobs/policy/</a>
+You need a job script to specify your job description, and use sbatch to submit the job. The script examples can be found <a href="https://docs.nersc.gov/jobs/examples/">https://docs.nersc.gov/jobs/examples/</a> and also at the end of this file.
+If you prepare your job script or input files in your local computer, it may result in error (Batch script contains DOS line breaks (\r\n). Use command <code>dos2unix yourfilename.</code></p>
+<p>Cori also provides an online job script generator, which is easy to use and can be found in MyNERSC -&gt; Jobs -&gt; Jobscript generator <a href="https://my.nersc.gov/script_generator.php">https://my.nersc.gov/script_generator.php</a></p>
+<h2 id="to-run-parflow">To run parflow</h2>
+<p>Use tclsh on the command line before submitting the job to the queue. </p>
+<p>Job script example</p>
+<pre><code class="language-bash">#!/bin/bash -l
+#SBATCH --qos=debug
+#SBATCH --nodes=2
+#SBATCH --constraint=haswell   
+#SBATCH --time=00:10:00    {the maximum running time}
+#SBATCH --job-name=test
+#SBATCH --account=m3780
+
+export PARFLOW_DIR=/global/project/projectdirs/m2511/parflow/cori-v3.7.0-11-gf70ce58-2021-07-14
+source $PARFLOW_DIR/setenv.sh   {these two lines are required to run}
+
+cd /global/cscratch1/sd/jzhang55/test/    {cd your directory}
+srun -n 64 $PARFLOW_DIR/bin/parflow test    {srun -n 64 means you request 64/32=2 nodes to run, so #SBATCH --nodes=2}
+</code></pre>
+<h2 id="monitoring-your-job">Monitoring your job</h2>
+<p><a href="https://docs.nersc.gov/jobs/#submitting-jobs">https://docs.nersc.gov/jobs/#submitting-jobs</a>
+<a href="https://docs.nersc.gov/jobs/#monitoring-jobs">https://docs.nersc.gov/jobs/#monitoring-jobs</a></p>
+<ul>
+<li><code>sbatch</code>: submit a batch script</li>
+<li><code>sacct</code>: display accounting data for jobs and job steps</li>
+<li><code>salloc</code>: request nodes for an interactive batch session</li>
+<li><code>srun</code>: launch parallel jobs</li>
+<li><code>scancel</code>: delete a batch job</li>
+<li><code>sqs</code>: NERSC custom queue display with job priority ranking info</li>
+<li><code>squeue</code>: display info about jobs in the queue</li>
+<li><code>sinfo</code>: view SLURM configuration about nodes and partitions</li>
+<li><code>scontrol</code>: view and modify SLURM configuration and job state</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cheyenne/" class="btn btn-neutral float-left" title="Running on Cheyenne (NCAR)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../parflow_install/" class="btn btn-neutral float-right" title="ParFlow Install">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cheyenne/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../parflow_install/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
