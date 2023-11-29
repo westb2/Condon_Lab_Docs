@@ -5,14 +5,12 @@
 **_(Updated) Rachel Spinti, Feb 2021_**
 
 ## Description
-  Running notes with links and tips for running on the UA HPC system.  Feel free to update and add to this document as needed. 
+  Running notes with links and tips for running on the UA HPC system.  Feel free to update and add to this document as needed. UA has multiple HPC systems. These docs contain instructions for both
 
 
 ## Ocelote Quick Start
 
 A good starting point. Tutorial highlights essential steps in running a basic job on HPC Ocelote.
-
-
 
 1. How to log in
 2. What a login node is
@@ -25,9 +23,7 @@ A good starting point. Tutorial highlights essential steps in running a basic jo
 
 ## Puma Quick Start:
 
-Tutorial highlights essential steps in running a basic job on HPC Puma.
-
-
+Tutorial below highlights essential steps in running a basic job on HPC Puma.
 
 1. How to log in
 2. What a login node is
@@ -57,7 +53,6 @@ To set-up a UA HPC account if you have not activated one. Sign-in and go to “M
 Should give you a choice to connect to Ocelote - if not you can type `menuon` to get the menu
 
 
-
 * Type `ocelote` to enter the real HPC system
 
 
@@ -68,25 +63,9 @@ Should give you a choice to connect to Ocelote - if not you can type `menuon` to
 A GUI that allows you to monitor jobs and access files outside the terminal. Can be easier to view and/or edit files this way than in command line.
 
 
-## Making a run script
+## How to run Python in a Jupiter notebook on UAHPC
 
-To execute a ‘job’ (ex: execute tclsh script) on HPC, one must ‘submit’ a request using the scheduling software PBS. 
-
-[https://public.confluence.arizona.edu/pages/viewpage.action?pageId=86409309](https://public.confluence.arizona.edu/pages/viewpage.action?pageId=86409309)
-
-
-
-* PBS Overview: Jobs are submitted to the batch system using PBS scripts that specify the job's required resources such as number of nodes, cpus, memory, group, wallclock time. 
-
-[https://jobbuilder.hpc.arizona.edu//](https://jobbuilder.hpc.arizona.edu//)
-
-
-
-* This site is helpful to start, but is a bit outdated: see the example pbs script at the end of this doc for more detail
-
-[https://public.confluence.arizona.edu/display/UAHPC/Ocelote+Quick+Start](https://public.confluence.arizona.edu/display/UAHPC/Ocelote+Quick+Start) 
-
-A (very helpful) “hello world” tutorial including job submission via pbs script
+It might be easiest to run Python using a Jupyter Notebook, for which UAHPC has developed super convenient GUIs. Check [here](https://public.confluence.arizona.edu/display/UAHPC/Jupyter+Notebook+-+Python) for a great tutorial. 
 
 
 ## Link for computing account management
@@ -131,6 +110,8 @@ There is a total time limitation for our group (36,000 hours/month), use command
 
 ## Uploading files to UAHPC:
 
+If Globus can be used on UAHPC you should. I (Ben West) am not sure if it can because I have not tried. Directions are in general info.
+
 [https://public.confluence.arizona.edu/display/UAHPC/Transferring+Files](https://public.confluence.arizona.edu/display/UAHPC/Transferring+Files) 
 
 
@@ -142,7 +123,7 @@ There is a total time limitation for our group (36,000 hours/month), use command
     4. Click `Upload` and navigate to the local file location.
     5. To use the file, navigate to the file location by clicking`Open in terminal`
 
-2. (big files &lt;100 GB). Use sftp, scp or rsync using filexfer.hpc.arizona.edu
+2. (big files &lt;100 GB). Use sftp, scp or rsync using filexfer.hpc.arizona.edu if you can't use Globus
 
     Copy your files through through the transfer node like below: 
 
@@ -162,51 +143,9 @@ There is a total time limitation for our group (36,000 hours/month), use command
     \*\*\* **Note as shown above scp requires [http://filexfer.hpc.arizona.edu/](http://filexfer.hpc.arizona.edu/) rather than [hpc.arizona.edu](http://hpc.arizona.edu/)**
 
 
-
-## Monitoring jobs
-
-**[https://public.confluence.arizona.edu/pages/viewpage.action?pageId=86409309](https://public.confluence.arizona.edu/pages/viewpage.action?pageId=86409309**
-
-*Note `qstat -u`  will truncate the job_id to get it not to do this you need to use
-
-`qstat -antsw1u lecondon`
-
-![list of qstat commands](../../images/qstat_commands.png)
-
-## Getting started
-
-Steps for getting started and running your first job:
-
-1. Get an account see instructions above
-2. Login `ssh username@hpc.arizona.edu` - _remember when you first login you need to type the correct number to actually get into Ocelote 
-3. Build ParFlow on Ocelote (follow the instructions below)
-4. Upload your files to the directory you want to run in. Look at the storage limits links above to learn about the places you can store files. Your home directory is VERY small 50GB so you don’t want to keep to much here but it’s a good place to put things that you don’t want to be deleted. The ‘extra’ directory has more space and is a better place to run. You can copy your files using the scp command through the filexfer node like this:
-
-    `scp -rp file.txt [lecondon@filexfer.hpc.arizona.edu](mailto:lecondon@filexfer.hpc.arizona.edu):/extra/lecondon/wash_base`
-
-
-    \*\*\* **Remember that on all HPC systems your files will be purged after a certain amount of time it is your job to be aware of the purge policies and copy your outputs somewhere appropriate for longer term storage. **
-
-
-    \*\*\* **Note as shown above scp requires [http://filexfer.hpc.arizona.edu/](http://filexfer.hpc.arizona.edu/) rather than [hpc.arizona.edu](http://hpc.arizona.edu/)**
-
-5. Build a run script. You can’t just tclsh on a HPC machine you need to ‘submit’ your job to request time and specify how much resources you will need. See the example run scripts below and the link above for generating a run script.  
-
-    Note: There are different queues that you can submit to. If you just want to test something quickly the debug queue is a good option. You can read about the different queues in the storage and limits section and see an example of a debug submission below
-
-6. Submit your job to the queue by running the qsub command on the run script you just created. 
-
-        qsub myrunscrp.pbs
-
-7. Minitor your job. You can see when your job starts running and finishes using the commands in the run monitoring section. 
-8. Copy your outputs back to your local machine using scp commands like in step four or upload to cyverse using irods commands.  
-
-
 ## ParFlow on UAHPC
 
-**Running with an existing version of ParFlow**
-
-_If you want to run with one of the versions of ParFlow that has already been build just add these lines to your bashrc and make sure that you aren’t also setting ‘PARFLOW_DIR’ in in your bashrc file. _
+_If you want to run with one of the versions of ParFlow that has already been build just add these lines to your bashrc and make sure that you aren’t also setting ‘PARFLOW_DIR’ to the appropriate location in your bashrc file. _
 
 ```bash
 ssh [username@hpc.arizona.edu](mailto:username@hpc.arizona.edu)
@@ -228,144 +167,7 @@ which parflow
 echo $PARFLOW_DIR
 ```
 
-**Adding a new ParFlow Module**
-
-Refer to the README file in:  `/unsupported/lecondon/parflow/`
-
-**These are the old instructions for building ParFlow with Autoconf. Ignore these and use the CMAKE ones**
-
-Download ParFlow
-
-`git clone  https://github.com/parflow/parflow`
-
-Rename this directory to whatever you want
-
-Setup environment
-
-`vi ~/.bashrc`
-
-Add the following lines to the user specified portion:
-
-    module load gcc
-
-    module load hypre
-
-    module load silo
-
-    export PARFLOW_DIR=/home/PATH_TO_YOUR_PARFLOW_DIR
-
-    PATH=$PATH:$PARFLOW_DIR/bin
-
-`source ~/.bashrc`
-
-Build ParFlow
-
-```bash
-cd pfsimulator
-
-./configure  --prefix=$PARFLOW_DIR --with-amps=mpi1 --with-clm --with-hypre=$HYPRE_BASE --with-silo=$SILO_BASE --with-amps-sequential-io
-
-make -j 14_
-
-_make install_
-
-_Build PFtools_
-
-_cd ../pftools_
-
-_./configure  --prefix=$PARFLOW_DIR --with-amps=mpi1 --with-clm --with-hypre=$HYPRE_BASE --with-silo=$SILO_BASE --with-amps-sequential-io_
-
-make -j 14
-
-make install
-```
-
-Run tests
-```bash
-
-cd ../test
-
-make check
-```
-
-## Example pbs script
-
-This is an example of what a job submit script should look like. You can generate one based off of this or using the link above
-
-```bash
-# Your job will use 1 node, 8 cores, and 48gb of memory total.
-
-#PBS -q standard
-
-#PBS -l select=1:ncpus=16:mem=48gb:pcmem=6gb
-
-### Specify a name for the job
-
-#PBS -N test
-
-### Specify the group name
-
-#PBS -W group_list=lecondon
-
-### Walltime is how long your job will run
-
-#PBS -l walltime=00:50:00
-
-### Joins standard error and standard out
-
-#PBS -j oe
-
-
-cd /home/u18/lecondon/Test/washita/tcl_scripts
-
-tclsh Dist_Forcings.tcl
-
-tclsh LW_Test.tcl
-```
-
-**_Note: the “place=pack:shared” and “cput” lines in the HPC job builder guide website are no longer necessary as of July 2019. _**
-
-
-## SLURM scripts
-
-Puma uses SLURM to submit jobs instead of PBS. The link above has a PBS to SLURM Rosetta stone, so you can convert your PBS script. Otherwise, the Puma Quick start guide contains a sample SLURM script ([https://public.confluence.arizona.edu/display/UAHPC/Puma+Quick+Start#PumaQuickStart-WritingaSLURMSubmissionScript)](https://public.confluence.arizona.edu/display/UAHPC/Puma+Quick+Start#PumaQuickStart-WritingaSLURMSubmissionScript)).
-
-
-## Debug queue
-
-The debug queue is a high-priority queue with a short runtime that is used to debug your runs before sending them to the standard or other queue. More information can be found here: 
-
-[https://docs.hpc.arizona.edu/display/UAHPC/Allocation+and+Limits](https://docs.hpc.arizona.edu/display/UAHPC/Allocation+and+Limits)
-
-**Example pbs script for debug queue (comments are in `{}` and not to be included in script):**
-
-```bash
-# Your job will use 1 node, 8 cores, and 48gb of memory total.
-
-#PBS -q debug		{changing specified queue to the debug queue}
-
-#PBS -l select=1:ncpus=16:mem=48gb:pcmem=6gb	
-
-{cannot exceed 2 nodes or 56 total cores}
-
-### Specify a name for the job
-
-#PBS -N test
-
-### Specify the group name
-
-#PBS -W group_list=lecondon
-
-### Walltime is how long your job will run
-
-#PBS -l walltime=00:10:00		{walltime cannot exceed 10 minutes}
-
-### Joins standard error and standard out
-
-#PBS -j oe
-```
-
-Once the job has been submitted to the debug queue and been executed, the error and output messages for the job will indicate whether the job ran for the total allotted time or ran into an error before then.
+You can also install parflow using the instructions in general info
 
 
 ## Time Allocation
@@ -409,27 +211,6 @@ There are two versions of Python in Puma (up to Python 3.8.2)
 * [https://public.confluence.arizona.edu/display/UAHPC/Puma+Quick+Start](https://public.confluence.arizona.edu/display/UAHPC/Puma+Quick+Start) 
 
 
-## Virtual Environments
-
-	It is useful to set up a virtualenv within your working directory. 
-
-
-![Virtual Envireonment instructions](../../images/ua_hpc_virtual_env_instructions.png)
-
-
-## Conda
-
-	Anaconda is available as a module, with its requisite packages and access to virtual environments (too?)
-
-
-![anaconda instructions](../../images/anaconda_insturctions.png)
-
-Look at Conda Environments: `conda env list`
-
-Create Conda Environments: `conda create --name -myenv`
-
-Activate Conda Environments: `conda activate` and `conda deactivate`
-
 ## How to do a basic script in Python
 
 1. Log in via terminal or bash
@@ -446,7 +227,7 @@ Activate Conda Environments: `conda activate` and `conda deactivate`
         touch pytorch_helloworld.pbs
         vim pytorch_helloworld.pbs
 
-
+## Example PBS workflow
 ```
 # --------------------------------------------------------------
 ### PART 1: Requests resources to run your job.
@@ -487,8 +268,6 @@ sleep 10i
 7. Follow job progression via qstat
 
 ![terminal output for qstat progress](../../images/qstat_progress.png)
-
-
 
 
 8. View results of job  `<jobname>.o<number>` for results, `<jobname>.e<number> for errors
@@ -714,6 +493,3 @@ sleep 10
 12. View results of job `<jobname>.o<number>` for results, `<jobname>.e<number>` for errors
 
 
-## How to run Python in a Jupiter notebook on UAHPC
-
-It might be easiest to run Python using a Jupyter Notebook, for which UAHPC has developed super convenient GUIs. Check [here](https://public.confluence.arizona.edu/display/UAHPC/Jupyter+Notebook+-+Python) for a great tutorial. 

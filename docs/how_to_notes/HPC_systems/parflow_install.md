@@ -3,6 +3,10 @@
 
 **_Laura Condon, 2/13/19_**
 
+## We recommend you use the parflow blog if you can instead of this page
+[The blog ](http://parflow.blogspot.com/) has install instructions for many systems. If you can use a resource there to help you it is updated more frequently. This page has been left up in case any of the dependency links are platform dependent (as in if you hypotheticall need to download and build a specific version of MPI on Ocelot for Parflow), but it is only recommended to use it as reference to debug why your install is not working.
+
+
 ## Description
   A running set of notes on ParFlow installs for various platforms. Please update this with your experiences either by adding comments or inserting text.  Please Add new installs to the top of this doc and use headings so that they can be included in the table of contents. 
 
@@ -36,56 +40,6 @@ They built Hypre and silo and these are available as modules
 
     Module show NAME (gives info on a specific module
 
-## Job submit and queue information
-
-Ocelote uses pbs for its job management system.
-
-Example pbs script for running on 1 node:
-
-```
-### Your job will use 1 node, 28 cores, and 168gb of memory total.
-
-#PBS -q standard
-
-#PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb
-
-### Specify a name for the job
-
-#PBS -N job_name
-
-### Specify the group name
-
-#PBS -W group_list=lecondon
-
-### Walltime is how long your job will run
-
-#PBS -l walltime=00:50:00
-```
-```
-Example pbs script for debugging script (always a good idea before you run anything):
-
-### Your job will use 1 node, 28 cores, and 168gb of memory total.
-
-#PBS -q debug
-
-#PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb
-
-### Specify a name for the job
-
-#PBS -N job_name
-
-### Specify the group name
-
-#PBS -W group_list=lecondon
-
-### Walltime is how long your job will run
-
-#PBS -l walltime=00:05:00
-```
-
-qsub job_name.pbs (submits jobs)
-
-qstat (lists all jobs running and in queue)
 
 ## Building ParFlow
 

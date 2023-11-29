@@ -20,16 +20,6 @@ No specific software is needed, you do need an account with NCAR and an HPC time
 ## Accessing and logging in to Cheyenne 
 
 
-    Open your terminal and type the following: 
-
-
-
-    1. ssh -Y -l “your_username” cheyenne.ucar.edu
-        1. _Note:_ Macs often need the -Y and -l commands
-        2. If it asks if you want to continue connecting, say yes
-    2. Enter your password 
-        3. You probably already set up duo when you set up your account, look on NCARs website for Cheyenne or call the help desk
-    3. You’re logged in!
 
     Go to your scratch folder
 
@@ -38,11 +28,11 @@ No specific software is needed, you do need an account with NCAR and an HPC time
         5. Mkdir “new_directory_name”
 
 
-## Updating your bash profile and loading modules
+## Updating your bash profile and loading modules for Parflow
 
 
-
-1. Make any necessary updates to your bash profile, directions below are requiredif you want to run ParFlow - you should only need to do this **once** and make sure you go to your scratch folder **first**
+1. Make any necessary updates to your bash profile, directions below are required if you want to run ParFlow - you should only need to do this **once** and make sure you go to your scratch folder. The first time you do it you will have to either source your bash profile or log out then back in.
+**first**
     5. `vim ~/.bash_profile`
     6. `export PARFLOW_DIR=/glade/p/univ/ucsm0002/parflow3.7_0826_2020/parflow`
     7. `export HYPRE_DIR=/glade/p/univ/ucsm0002/hypre/2.10.1`
@@ -60,8 +50,6 @@ No specific software is needed, you do need an account with NCAR and an HPC time
             1. _1) ncarenv/1.3   2) intel/18.0.5   3) ncarcompilers/0.5.0   4) mpt/2.19   5) netcdf/4.6.3_
 
 3. Load the modules you need (example. below) 
-
-
 
         c. aktriplett@cheyenne4:/glade/scratch/aktriplett> module load cmake
         8. aktriplett@cheyenne4:/glade/scratch/aktriplett> module load nco
@@ -82,92 +70,11 @@ No specific software is needed, you do need an account with NCAR and an HPC time
         2) intel/18.0.5   4) mpt/2.19              6) cmake/3.14.4   8) ncl/6.6.2  10) R/3.6.0
 
 
-## Getting files to and from Cheyenne using scp
+## Job Scripts
 
-**NOTE:** This is an inferior method to using **Globus**, see the getting started on Globus notes in the Methods section.
-
-
-
-1. Getting files to Cheyenne
-    1. To copy from **your** computer **to** Cheyenne:
-        1. Navigate to the folder where your file is
-        2. scp `“your_file_name” “your_user_name”@data-access.ucar.edu:/glade/scratch/”your_user_name”/”the rest of the path to where you want the file”`
-    2. To copy **from** Cheyenne **to your** computer
-        3. Navigate to the folder where you want the files
-        4. `scp “your_user_name”@data-access.ucar.edu:/glade/scratch/”your_user_name”/”the rest of the path to where you want the file”` .
-        5. You can use a `*.{“file_ext”}` to scp multiple files of the same type
-            1. `scp “your_user_name”@data-access.ucar.edu:/glade/scratch/”your_user_name”/”the rest of the path to where you want the file”/*.{file_ext1, file_ext2}` .
-    3. Moving files within Cheyenne
-        6. Navigate to where the file is now
-        14.`mv “file_name” “destination_file_path”`
-
-
-## Editing and Saving Files within Cheyenne
-
-
-
-1. To open a file 
-    1. `vi “file_name”`
-    2. To make a change, type `i` for insert 
-    3. Click escape to stop making changes 
-    4. Type `zz `to save
-    5. Type `shift zz` to save and exit 
-    6. Type `:x` to exit without saving 
-
-
-## Job Scripts, running your TCL, checking your status and killing your job 
-
-
-
-1. You need a job_script for Cheyenne to run your job. There will be a tclsh call at the end of this that will call your tcl script and run your job. 
-    1. Below is an example job script
-
-```bash
-#!/bin/bash
-
-#PBS -N HRB_PLtest1 -> this is what your run will be called
-
-#PBS -A UCSM0009 -> your award number
-
-#PBS -l walltime=01:00:00 -> clock time before your script is killed
-
-#PBS -q regular -> specify your queue, r is regular but there is also debug
-
-#PBS -j oe
-
-#PBS -o log1.oe -> name of the run log file you get
-
-#PBS -m abe
-
-#PBS -M [aktriplett@email.arizona.edu](mailto:aktriplett@email.arizona.edu) -> add this line to get run e-mail updates
-
-#PBS -l select=12:ncpus=36:mpiprocs=36 -> the processors or computing resources you are requesting
-```
-
-### Run the executable
-
-`tclsh HRB_parkinglot.tcl` -> the name of your tcl script
-
-
-
-2. Useful link with info about anatomy and making of pbs scripts:
-    2. [https://www.scribd.com/document/359446973/PBS-Queue-Commands](https://www.scribd.com/document/359446973/PBS-Queue-Commands)
-3. Commands for run scripts
-    3. qsub “script_name” 
-        1. This runs your job
-    4. `qstat -u “your_username”` 
-        2. Check on the status of your job 
-        3. Add `alias qjobs="qstat -u $USER"` to your bash profile to check your job status using ‘qjobs’
-
-     c.`Qdel “job_number”`
-
-
-    i. Kill your job
-
+Cheyenne uses PBS for job scheduling. See general info
 
 ## Checking your Core Hour Usage
-
-
 
 1. Follow this link to the Systems Accounting Manager (SAM) system 
     1. [Sam.ucar.edu](https://sam.ucar.edu/app/home)
@@ -180,19 +87,9 @@ No specific software is needed, you do need an account with NCAR and an HPC time
 ![cheyenne usage hours](../../images/cheyenne_usage.png)
 
 
+## Installing icommands on Cheyenne 
 
-
-## Misc. info
-
-
-
-1. Information about where to store / what directories to make can be put in the tcl script, it will make whatever folder / file tree you specify in your scratch directory
-2. The amount of storage available on the scratch directory shouldn’t be an issue for most runs
-3. To transfer files to and from the scratch directory, you can just scp from the scratch folder to home computer and back again, there is no special node to do this on or way like the UAHPC
-4. You can check log outputs to see if there are any errors
-
-
-## Installing icommands on Cheyenne
+This is likely deprecated, use at your own risk (Ben West)
 
 It is possible to install icommands on Cheyenne without any additional privilege in your own directory. _Icommands if NOT natively installed on Cheyenne unlike UAHPC. _Detailed can be found here, [https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-co](https://wiki.cyverse.org/wiki/display/DS/Setting+Up+iCommands#SettingUpiCommands-co)
 
@@ -253,8 +150,6 @@ export PATH=/glade/u/home/yourusername/icommands:$PATH
 
 ## Running with Python on Cheyenne
 
-
-
 * General instructions of how to get running with python can be found at: 
     * [https://www2.cisl.ucar.edu/resources/python-–-ncar-package-library](https://www2.cisl.ucar.edu/resources/python-–-ncar-package-library)
 
@@ -276,7 +171,9 @@ export PATH=/glade/u/home/yourusername/icommands:$PATH
 * If your virtualenv stops working, you may have to delete it and create a new one, just follow the above steps again and you should be good
 
 
-## Building a New Version of ParFlow on Cheyenne (08/2020) from MM at CSM
+## Building a New Version of ParFlow on Cheyenne (08/2020) from MM at CSM. 
+
+Use this for reference on module loading at the very least, Parflow blog can be used to suplement if any of the links to dependencies are deprecated.
 
 _Adding specific ParFlow Builds to your bash profile. This is an example for a specific version, you need to add the path to the version you want to use after export:_
 
@@ -338,7 +235,3 @@ make
 make install
 
 ```
-
-
-
-1. Go to where you installed 
