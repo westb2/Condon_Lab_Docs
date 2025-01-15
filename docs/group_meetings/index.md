@@ -1,6 +1,23 @@
 # Group Meetings
 Below is a summary of our past group meetings.  They are organized by year and semester.  After the conclusion of each semester, the lab group meeting coordinator will update this doc accordingly.  Make sure to change the permissions on any slide links to viewer only.
 
+## 2024
+### Fall
+Group Meeting Coordinator: Ben West
+---
+| Date | Description| Resources |
+|---|---|---|
+|9/12 | Graphs of things people were struggling with|[Slides](https://docs.google.com/presentation/d/1RIniHipdhxF-_4_mg9qYlf9357ezTv2c/edit?usp=sharing&ouid=115452162442425983102&rtpof=true&sd=true)|
+|9/19 | Amanda and Luis practiced talks|| 
+|9/26 | Ben and Patricia practiced talks ||
+|10/10 | Code skills day |[Slides](https://docs.google.com/presentation/d/16SDBhct6jT44f9N3ZYACEhwsjMSeWWiLY-k0ZDzUCjw/edit?usp=sharing)|
+|10/24 | Amanda Comps||
+|11/7| Bonnie Colby came and talked about indigenous water rights|[Slides and readings](https://drive.google.com/drive/folders/1H0BT0IYg1g4QCcXwic-cV8Ao7tXHpXD4)|
+|11/14| We shared code we had written that used classes as follow up to 10/10 meeting||
+|11/21| Luis defense practice||
+|12/5| AGU practice||
+|12/19| Winter break goals + one interesting figure|[Slides]https://docs.google.com/presentation/d/1NGRywf5Sc-WwGmJtXjwgDgaIiv-rVrLSwV9Q0pSZDxc/edit?usp=sharing|
+
 ## 2023
 ### Spring
 Group Meeting Coordinator: Patricia Puente
