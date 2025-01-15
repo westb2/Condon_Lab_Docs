@@ -2,6 +2,25 @@
 Below is a summary of our past group meetings.  They are organized by year and semester.  After the conclusion of each semester, the lab group meeting coordinator will update this doc accordingly.  Make sure to change the permissions on any slide links to viewer only.
 
 ## 2024
+### Spring
+Group Meeting Coordinator: Danielle Tadych
+---
+| Date | Description| Resources |
+|---|---|---|
+|1/11 | Goal and Aspirations|[Slides](https://docs.google.com/presentation/d/1CK5Lm81hheuyt0FBn5ymEtFgEt0DSK4jKZzr4P4QFJs/edit#slide=id.p)|
+|1/18| Danielle and Amanda research updates||
+|2/1| Paper Storyboards||
+|2/8| Leonardo research||
+|2/15 | Figure Day|[Slides](https://docs.google.com/presentation/d/1Q1iQhQhtnxVjDF4oAXlTL6ttk_sF7eg8/edit?usp=sharing&ouid=115452162442425983102&rtpof=true&sd=true)| 
+|2/29| Danielle and Amanda paper storyboards||
+|3/21| Picture day||
+|4/4 | Figure Day |[Slides](https://docs.google.com/presentation/d/1wfHl28wdMEZhqr7l84fjELF-6l63TbMpdxBRcBKGkgI/edit?usp=sharing)|
+|4/11| EGU practice||
+|4/18| Rubab covered groundwater dependent ecosystems||
+|4/25| Leonardo update and Rubab Interview Practice||
+|5/2 | Career Day |[Slides](https://docs.google.com/presentation/d/1SaGlMe0jPY9wi7eCrMnf0MHB25M9RtTeNhkuRxH3Pic/edit?usp=sharing)|
+|5/16| Abstract review round robin||
+
 ### Fall
 Group Meeting Coordinator: Ben West
 ---
@@ -16,7 +35,7 @@ Group Meeting Coordinator: Ben West
 |11/14| We shared code we had written that used classes as follow up to 10/10 meeting||
 |11/21| Luis defense practice||
 |12/5| AGU practice||
-|12/19| Winter break goals + one interesting figure|[Slides]https://docs.google.com/presentation/d/1NGRywf5Sc-WwGmJtXjwgDgaIiv-rVrLSwV9Q0pSZDxc/edit?usp=sharing|
+|12/19| Winter break goals + one interesting figure|[Slides](https://docs.google.com/presentation/d/1NGRywf5Sc-WwGmJtXjwgDgaIiv-rVrLSwV9Q0pSZDxc/edit?usp=sharing)|
 
 ## 2023
 ### Spring
